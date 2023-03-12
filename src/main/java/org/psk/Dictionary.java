@@ -1,4 +1,5 @@
 package org.psk;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -17,6 +18,10 @@ public class Dictionary {
     public void insert(String word, String translation) {
         int index;
         Node currentNode = root[word.charAt(0) - 'a'];
+        if (currentNode == null) {
+            currentNode = new Node();
+            root[word.charAt(0) - 'a'] = currentNode;
+        }
         for (int i = 1; i < word.length(); i++) {
             index = word.charAt(i) - 'a';
             if (currentNode.children[index] == null) {
@@ -31,8 +36,12 @@ public class Dictionary {
         currentNode.translations.offer(translation);
     }
 
+
     public Queue<String> search(String word) {
         Node currentNode = root[word.charAt(0) - 'a'];
+        if (currentNode == null) {
+            return null;
+        }
         for (int i = 1; i < word.length(); i++) {
             int index = word.charAt(i) - 'a';
             if (currentNode.children[index] == null) {

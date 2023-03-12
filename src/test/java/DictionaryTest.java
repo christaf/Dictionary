@@ -1,2 +1,62 @@
+import org.junit.Test;
+import org.psk.Dictionary;
+import java.util.Queue;
+
+import static org.junit.Assert.*;
+
 public class DictionaryTest {
+
+    @Test
+    public void testConstructor() {
+        Dictionary dictionary = new Dictionary();
+        assertNotNull(dictionary);
+    }
+
+    @Test
+    public void testInsertAndSearch_SingleTranslation() {
+        Dictionary dictionary = new Dictionary();
+        String word = "hello";
+        String translation = "hola";
+
+        // Insert the word and translation
+        dictionary.insert(word, translation);
+
+        // Search for the word and verify the translation
+        Queue<String> translations = dictionary.search(word);
+        assertNotNull(translations);
+        assertEquals(1, translations.size());
+        assertEquals(translation, translations.poll());
+    }
+
+    @Test
+    public void testInsertAndSearch_MultipleTranslations() {
+        Dictionary dictionary = new Dictionary();
+        String word = "hello";
+        String translation1 = "hola";
+        String translation2 = "bonjour";
+
+        // Insert the word and translations
+        dictionary.insert(word, translation1);
+        dictionary.insert(word, translation2);
+
+        // Search for the word and verify the translations
+        Queue<String> translations = dictionary.search(word);
+        assertNotNull(translations);
+        assertEquals(2, translations.size());
+        assertEquals(translation1, translations.poll());
+        assertEquals(translation2, translations.poll());
+    }
+
+    @Test
+    public void testSearch_NonExistentWord() {
+        Dictionary dictionary = new Dictionary();
+
+        // Search for a non-existent word
+        Queue<String> translations = dictionary.search("goodbye");
+        assertNull(translations);
+        dictionary.insert("kot", "cat");
+        translations = dictionary.search("goodbye");
+        assertNull(translations);
+    }
+
 }

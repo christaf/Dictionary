@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="init local">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/DictionaryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="added Dictionary class that will later contain data,&#10;added DictionaryTest (currently empty) &#10;added dependencies to be able to test (JUNIT)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dictionary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dictionary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DictionaryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DictionaryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678580404964</updated>
-      <workItem from="1678642654941" duration="2898000" />
+      <workItem from="1678642654941" duration="5767000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1678584230613</created>
@@ -122,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678637759897</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added Dictionary class that will later contain data,&#10;added DictionaryTest (currently empty) &#10;added dependencies to be able to test (JUNIT)">
+      <created>1678660766901</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678660766902</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +144,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="Wstępny wygląd słownika&#10;Podstawowe funkcjonalności" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wstępny wygląd słownika&#10;Podstawowe funkcjonalności" />
+    <MESSAGE value="added Dictionary class that will later contain data,&#10;added DictionaryTest (currently empty) &#10;added dependencies to be able to test (JUNIT)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Dictionary class that will later contain data,&#10;added DictionaryTest (currently empty) &#10;added dependencies to be able to test (JUNIT)" />
   </component>
 </project>
