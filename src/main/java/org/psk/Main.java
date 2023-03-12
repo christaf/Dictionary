@@ -55,7 +55,7 @@ public class Main extends Application {
         HBox searchBox = new HBox(10, searchField, addButton);
         searchBox.setAlignment(Pos.CENTER_LEFT);
 
-        wordList = new ListView<>(foundWords);
+            wordList = new ListView<>(foundWords);
         wordList.setPrefWidth(200);
 
         VBox searchPane = new VBox(10, searchBox, wordList);
