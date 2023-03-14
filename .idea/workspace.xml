@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="App converted into MVC model, warning it doesnt work">
+    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="Tries to make this MVC model work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryView.java" afterDir="false" />
@@ -111,7 +111,7 @@
       <updated>1678580404964</updated>
       <workItem from="1678642654941" duration="6124000" />
       <workItem from="1678791961213" duration="300000" />
-      <workItem from="1678804781066" duration="6977000" />
+      <workItem from="1678804781066" duration="9307000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1678584230613</created>
@@ -155,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678811075740</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Tries to make this MVC model work">
+      <created>1678814084378</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678814084378</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +186,8 @@
     <MESSAGE value="added changes to Dictionary class (checking if dictionary is empoty),&#10;added some tests to DictionaryTest" />
     <MESSAGE value="Changed structure of dictionary to use HashSet instead of table of nodes&#10;Children are now stored in HashSet for better performance and simpler code" />
     <MESSAGE value="App converted into MVC model, warning it doesnt work" />
-    <option name="LAST_COMMIT_MESSAGE" value="App converted into MVC model, warning it doesnt work" />
+    <MESSAGE value="App converted into MVC model, warning it doesnt work 2" />
+    <MESSAGE value="Tries to make this MVC model work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tries to make this MVC model work" />
   </component>
 </project>

@@ -1,7 +1,6 @@
 package org.psk;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 //package org.psk;

@@ -1,7 +1,9 @@
 package org.psk;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -42,19 +44,23 @@ public class DictionaryView {
 
     }
 
-    public void createSearchUI(DictionaryController controller) {
+    public Scene createSearchUI(DictionaryController controller) {
         Button searchButton = new Button("Search");
         searchButton.setOnAction(event -> controller.searchWords(searchField.getText()));
 
         HBox searchBox = new HBox(10, searchField, searchButton);
         searchBox.setAlignment(Pos.CENTER_LEFT);
 
+        wordList.setItems(FXCollections.observableArrayList());
         VBox searchPane = new VBox(10, searchBox, wordList);
         searchPane.setPadding(new Insets(10));
 
+        Scene scene = new Scene(searchPane);
+        return scene;
     }
 
-    public void createAddWordUI(DictionaryController controller) {
+
+    public Scene createAddWordUI(DictionaryController controller) {
         TextField addField = new TextField();
         addField.setPromptText("Enter a word to add");
 
@@ -67,7 +73,10 @@ public class DictionaryView {
         VBox addPane = new VBox(10, addField, saveButton, cancelButton);
         addPane.setPadding(new Insets(10));
 
+        Scene scene = new Scene(addPane);
+        return scene;
     }
+
 
     public void displaySearchResults(ObservableList<String> results) {
         wordList.setItems(results);

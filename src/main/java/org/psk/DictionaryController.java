@@ -2,20 +2,28 @@ package org.psk;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class DictionaryController {
 
     private final DictionaryModel model;
     private final DictionaryView view;
+    private final Stage stage;
 
     public DictionaryController(Stage stage) {
         model = new DictionaryModel();
         view = new DictionaryView();
 
+        this.stage = stage;
+
         // Set up event handlers
-        view.createSearchUI(this);
-        view.createAddWordUI(this);
+        Scene searchScene = view.createSearchUI(this);
+        Scene addScene = view.createAddWordUI(this);
+
+        stage.setScene(searchScene);
+        stage.setScene(addScene);
+        stage.show();
 
     }
 
