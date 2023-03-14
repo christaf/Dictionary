@@ -2,19 +2,21 @@ package org.psk;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 
 public class DictionaryController {
 
     private final DictionaryModel model;
     private final DictionaryView view;
 
-    public DictionaryController() {
+    public DictionaryController(Stage stage) {
         model = new DictionaryModel();
         view = new DictionaryView();
 
         // Set up event handlers
         view.createSearchUI(this);
         view.createAddWordUI(this);
+
     }
 
     public void searchWords(String searchTerm) {

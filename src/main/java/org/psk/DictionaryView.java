@@ -62,7 +62,7 @@ public class DictionaryView {
         saveButton.setOnAction(event -> controller.saveWord(addField.getText()));
 
         Button cancelButton = new Button("Cancel");
-        cancelButton.setOnAction(event -> controller.showSearchUI());
+        cancelButton.setOnAction(event -> controller.handleCancelAction());
 
         VBox addPane = new VBox(10, addField, saveButton, cancelButton);
         addPane.setPadding(new Insets(10));
