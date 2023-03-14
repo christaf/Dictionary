@@ -1,33 +1,49 @@
 package org.psk;
 
 import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.Queue;
 
 public class Dictionary {
-
-    private static final int ALPHABET_SIZE = 26;
-
-    private final Node[] root = new Node[ALPHABET_SIZE];
+    private final HashSet<Node> root = new HashSet<>();
 
     private static class Node {
+        char value;
         boolean isEndOfWord;
         Queue<String> translations;
-        Node[] children = new Node[ALPHABET_SIZE];
+        HashSet<Node> children = new HashSet<>();
+
+        public Node(char value) {
+            this.value = value;
+        }
     }
 
+
     public void insert(String word, String translation) {
-        int index;
-        Node currentNode = root[word.charAt(0) - 'a'];
+        Node currentNode = null;
+        for (Node child : root) {
+            if (child.value == word.charAt(0)) {
+                currentNode = child;
+                break;
+            }
+        }
         if (currentNode == null) {
-            currentNode = new Node();
-            root[word.charAt(0) - 'a'] = currentNode;
+            currentNode = new Node(word.charAt(0));
+            root.add(currentNode);
         }
         for (int i = 1; i < word.length(); i++) {
-            index = word.charAt(i) - 'a';
-            if (currentNode.children[index] == null) {
-                currentNode.children[index] = new Node();
+            Node nextNode = null;
+            for (Node child : currentNode.children) {
+                if (child.value == word.charAt(i)) {
+                    nextNode = child;
+                    break;
+                }
             }
-            currentNode = currentNode.children[index];
+            if (nextNode == null) {
+                nextNode = new Node(word.charAt(i));
+                currentNode.children.add(nextNode);
+            }
+            currentNode = nextNode;
         }
         currentNode.isEndOfWord = true;
         if (currentNode.translations == null) {
@@ -38,16 +54,28 @@ public class Dictionary {
 
 
     public Queue<String> search(String word) {
-        Node currentNode = root[word.charAt(0) - 'a'];
+        Node currentNode = null;
+        for (Node child : root) {
+            if (child.value == word.charAt(0)) {
+                currentNode = child;
+                break;
+            }
+        }
         if (currentNode == null) {
             return null;
         }
         for (int i = 1; i < word.length(); i++) {
-            int index = word.charAt(i) - 'a';
-            if (currentNode.children[index] == null) {
+            Node nextNode = null;
+            for (Node child : currentNode.children) {
+                if (child.value == word.charAt(i)) {
+                    nextNode = child;
+                    break;
+                }
+            }
+            if (nextNode == null) {
                 return null;
             }
-            currentNode = currentNode.children[index];
+            currentNode = nextNode;
         }
         if (currentNode.isEndOfWord) {
             return currentNode.translations;
