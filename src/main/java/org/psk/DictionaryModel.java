@@ -33,7 +33,7 @@ public class DictionaryModel {
     }
 
     private void writeDictionary() {
-        try (FileWriter writer = new FileWriter(DICTIONARY_FILE_NAME)) {
+        try (FileWriter writer = new FileWriter(DICTIONARY_FILE_NAME, true)) {
             for (String word : words) {
                 writer.write(word + "\n");
             }

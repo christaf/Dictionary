@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="Tries to make this MVC model work">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dictionary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dictionary.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
