@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class DictionaryModel {
     private static final String DICTIONARY_FILE_NAME = "dictionary.txt";
-    private static final String LETTERS = "abcdefghijklmnopqrstuvwxyz";
 
     private final List<String> words = new ArrayList<>();
 
@@ -32,8 +31,8 @@ public class DictionaryModel {
         writeDictionary();
     }
 
-    private void writeDictionary() {
-        try (FileWriter writer = new FileWriter(DICTIONARY_FILE_NAME, true)) {
+    protected void writeDictionary() {
+        try (FileWriter writer = new FileWriter(DICTIONARY_FILE_NAME)) {
             for (String word : words) {
                 writer.write(word + "\n");
             }
@@ -42,7 +41,7 @@ public class DictionaryModel {
         }
     }
 
-    public List<String> searchWords(String search) {
+      public List<String> searchWords(String search) {
         List<String> foundWords = new ArrayList<>();
         if (search.length() > 0) {
             for (String word : words) {

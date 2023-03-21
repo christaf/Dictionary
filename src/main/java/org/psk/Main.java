@@ -1,8 +1,8 @@
 package org.psk;
-
+//
 import javafx.application.Application;
 import javafx.stage.Stage;
-
+//
 //package org.psk;
 //
 //import javafx.application.Application;
@@ -210,8 +210,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        DictionaryController controller = new DictionaryController(stage);
+        DictionaryController controller = DictionaryController.getInstance(stage);
         controller.showSearchUI();
+
+    }
+
+    @Override
+    public void stop() {
 
     }
 
