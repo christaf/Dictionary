@@ -15,6 +15,9 @@ public class DictionaryView {
     private final TextField searchField;
     private final ListView<String> wordList;
 
+//    private final Scene addScene;
+//    private final Scene searchScene;
+
     public DictionaryView() {
         // Create the search UI
         searchField = new TextField();
@@ -41,10 +44,13 @@ public class DictionaryView {
 
         VBox addPane = new VBox(10, addField, saveButton, cancelButton);
         addPane.setPadding(new Insets(10));
+//        Scene addScene = (Scene) addPane;
+//        this.addScene = (Scene) addPane;
 
     }
 
     public Scene createSearchUI(DictionaryController controller) {
+
         Button searchButton = new Button("Search");
         searchButton.setOnAction(event -> controller.searchWords(searchField.getText()));
 
@@ -55,8 +61,7 @@ public class DictionaryView {
         VBox searchPane = new VBox(10, searchBox, wordList);
         searchPane.setPadding(new Insets(10));
 
-        Scene scene = new Scene(searchPane);
-        return scene;
+        return new Scene(searchPane);
     }
 
 
@@ -73,8 +78,7 @@ public class DictionaryView {
         VBox addPane = new VBox(10, addField, saveButton, cancelButton);
         addPane.setPadding(new Insets(10));
 
-        Scene scene = new Scene(addPane);
-        return scene;
+        return new Scene(addPane);
     }
 
 

@@ -13,7 +13,7 @@ import java.util.List;
 public class DictionaryModel {
     private static final String DICTIONARY_FILE_NAME = "dictionary.txt";
 
-    private final List<String> words = new ArrayList<>();
+    public final List<String> words = new ArrayList<>();
 
     public void readDictionary() {
         try (BufferedReader reader = new BufferedReader(new FileReader(DICTIONARY_FILE_NAME))) {

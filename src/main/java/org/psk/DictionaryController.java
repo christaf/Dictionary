@@ -10,6 +10,7 @@ public class DictionaryController {
     private static DictionaryController instance;
     private final DictionaryModel model;
     private final DictionaryView view;
+    private Dictionary dictionary;
     private final Stage stage;
 
     public static DictionaryController getInstance(Stage stage) {
@@ -19,16 +20,18 @@ public class DictionaryController {
         return instance;
     }
 
-    public DictionaryController(Stage stage) {
+    private DictionaryController(Stage stage) {
 
         model = new DictionaryModel();
         view = new DictionaryView();
 
         this.stage = stage;
-
         // Set up event handlers
         Scene searchScene = view.createSearchUI(this);
         Scene addScene = view.createAddWordUI(this);
+
+        model.readDictionary();
+        System.out.println(model.words);
 
         stage.setOnCloseRequest(event -> {
             // your code here to handle the close event
@@ -37,7 +40,7 @@ public class DictionaryController {
         });
 
         stage.setScene(searchScene);
-        stage.setScene(addScene);
+        //stage.setScene(addScene);
         stage.show();
 
 
