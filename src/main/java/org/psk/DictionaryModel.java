@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /***
@@ -24,10 +25,12 @@ public class DictionaryModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Collections.sort(words);
     }
 
     public void addWord(String word) {
         words.add(word.toLowerCase());
+        Collections.sort(words);
         writeDictionary();
     }
 
