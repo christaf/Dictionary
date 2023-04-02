@@ -11,7 +11,11 @@ import java.util.List;
  * CLass DictionaryModel is responsible for managing the dictionary and searching for words.
  */
 public class DictionaryModel {
-    private static final String DICTIONARY_FILE_NAME = "dictionary.txt";
+    private final String DICTIONARY_FILE_NAME; // = "dictionary.txt";
+
+    public DictionaryModel(String FileName) {
+        DICTIONARY_FILE_NAME = FileName;
+    }
 
     public final List<String> words = new ArrayList<>();
 
@@ -41,7 +45,7 @@ public class DictionaryModel {
         }
     }
 
-      public List<String> searchWords(String search) {
+    public List<String> searchWords(String search) {
         List<String> foundWords = new ArrayList<>();
         if (search.length() > 0) {
             for (String word : words) {

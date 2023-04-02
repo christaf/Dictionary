@@ -13,18 +13,22 @@ import static org.junit.Assert.assertTrue;
 public class DictionaryModelTest {
 
     private DictionaryModel dictionary;
+    private String fileName;
 
     @Before
     public void setUp() {
-        dictionary = new DictionaryModel();
+        this.fileName = "dictionary_test.txt";
+        dictionary = new DictionaryModel(fileName);
     }
 
     @Test
     public void testReadDictionary() throws IOException {
-        File dictionaryFile = new File("dictionary.txt");
+        boolean ifCreated = true;
+        File dictionaryFile = new File(this.fileName);
         if (!dictionaryFile.exists()) {
-            dictionaryFile.createNewFile();
+            ifCreated = dictionaryFile.createNewFile();
         }
+        assertTrue(ifCreated);
         FileWriter writer = new FileWriter(dictionaryFile);
         writer.write("apple\nbanana\ncherry\ndate\n");
         writer.close();
