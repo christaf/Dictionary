@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="Controller is now a singleton">
+    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="Added tests classes&#10;DictionaryViewTest doesnt work yet">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/psk/NewDictionaryModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2023_21_20__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2023_21_20__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dictionary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dictionary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dictionary_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dictionary_test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DictionaryModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DictionaryModelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +88,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DictionaryViewTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.psk.Main" />
       <module name="dictionary" />
@@ -98,8 +102,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DictionaryViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dictionary" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DictionaryViewTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DictionaryViewTest" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -115,6 +129,8 @@
       <workItem from="1678642654941" duration="6124000" />
       <workItem from="1678791961213" duration="300000" />
       <workItem from="1678804781066" duration="9307000" />
+      <workItem from="1679989096632" duration="5334000" />
+      <workItem from="1679998104975" duration="369000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1678584230613</created>
@@ -165,12 +181,12 @@
       <option name="project" value="LOCAL" />
       <updated>1678814084378</updated>
     </task>
-    <task id="LOCAL-00008" summary="Important mistake, overriding file instead of appending to them">
-      <created>1679085056659</created>
+    <task id="LOCAL-00008" summary="Added tests classes&#10;DictionaryViewTest doesnt work yet">
+      <created>1679996186114</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1679085056659</updated>
+      <updated>1679996186115</updated>
     </task>
     <option name="localTasksCounter" value="9" />
     <servers />
@@ -198,7 +214,7 @@
     <MESSAGE value="App converted into MVC model, warning it doesnt work" />
     <MESSAGE value="App converted into MVC model, warning it doesnt work 2" />
     <MESSAGE value="Tries to make this MVC model work" />
-    <MESSAGE value="Important mistake, overriding file instead of appending to them" />
-    <option name="LAST_COMMIT_MESSAGE" value="Important mistake, overriding file instead of appending to them" />
+    <MESSAGE value="Added tests classes&#10;DictionaryViewTest doesnt work yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tests classes&#10;DictionaryViewTest doesnt work yet" />
   </component>
 </project>

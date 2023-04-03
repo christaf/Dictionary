@@ -1,4 +1,5 @@
 package org.psk;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -12,15 +13,12 @@ import javafx.scene.layout.VBox;
 
 public class DictionaryView {
 
-    private final TextField searchField;
-    private final ListView<String> wordList;
-
-//    private final Scene addScene;
-//    private final Scene searchScene;
-
-    public DictionaryView() {
-        // Create the search UI
-        searchField = new TextField();
+    private ListView<String> wordList;
+    //TODO BUTTON I TEXT FIELDY TU WRZUCIC
+    //try to add buttons with their getters and setters eventOnAction so that we can manip
+    //so that we can manipulate the content of our view :)
+    public Scene createSearchUI(DictionaryController controller) {
+        TextField searchField = new TextField();
         searchField.setPromptText("Enter a word to search");
 
         Button addButton = new Button("Add Word");
@@ -34,6 +32,13 @@ public class DictionaryView {
         VBox searchPane = new VBox(10, searchBox, wordList);
         searchPane.setPadding(new Insets(10));
 
+
+        return new Scene(searchPane);
+    }
+
+
+    public Scene createAddWordUI(DictionaryController controller) {
+
         // Create the add word UI
         TextField addField = new TextField();
         addField.setPromptText("Enter a word to add");
@@ -42,41 +47,10 @@ public class DictionaryView {
 
         Button cancelButton = new Button("Cancel");
 
-        VBox addPane = new VBox(10, addField, saveButton, cancelButton);
+        VBox addPane = new VBox(50, addField, saveButton, cancelButton);
         addPane.setPadding(new Insets(10));
-//        Scene addScene = (Scene) addPane;
-//        this.addScene = (Scene) addPane;
 
-    }
-
-    public Scene createSearchUI(DictionaryController controller) {
-
-        Button searchButton = new Button("Search");
-        searchButton.setOnAction(event -> controller.searchWords(searchField.getText()));
-
-        HBox searchBox = new HBox(10, searchField, searchButton);
-        searchBox.setAlignment(Pos.CENTER_LEFT);
-
-        wordList.setItems(FXCollections.observableArrayList());
-        VBox searchPane = new VBox(10, searchBox, wordList);
-        searchPane.setPadding(new Insets(10));
-
-        return new Scene(searchPane);
-    }
-
-
-    public Scene createAddWordUI(DictionaryController controller) {
-        TextField addField = new TextField();
-        addField.setPromptText("Enter a word to add");
-
-        Button saveButton = new Button("Save Word");
-        saveButton.setOnAction(event -> controller.saveWord(addField.getText()));
-
-        Button cancelButton = new Button("Cancel");
-        cancelButton.setOnAction(event -> controller.handleCancelAction());
-
-        VBox addPane = new VBox(10, addField, saveButton, cancelButton);
-        addPane.setPadding(new Insets(10));
+        addPane.setStyle("-fx-background-color: #F8F8F8;");
 
         return new Scene(addPane);
     }
@@ -87,4 +61,3 @@ public class DictionaryView {
     }
 
 }
-

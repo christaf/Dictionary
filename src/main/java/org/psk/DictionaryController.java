@@ -72,4 +72,7 @@ public class DictionaryController {
         showSearchUI();
     }
 
+    public DictionaryModel getModel() {
+        return this.model;
+    }
 }

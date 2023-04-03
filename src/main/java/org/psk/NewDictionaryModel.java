@@ -9,12 +9,12 @@ import java.util.Collections;
 import java.util.List;
 
 /***
- * CLass DictionaryModel is responsible for managing the dictionary and searching for words.
+ * CLass NewDictionaryModel is responsible for managing the dictionary and searching for words.
  */
-public class DictionaryModel {
+public class NewDictionaryModel {
     private final String DICTIONARY_FILE_NAME; // = "dictionary.txt";
 
-    public DictionaryModel(String FileName) {
+    public NewDictionaryModel(String FileName) {
         DICTIONARY_FILE_NAME = FileName;
     }
 
@@ -58,9 +58,5 @@ public class DictionaryModel {
             }
         }
         return foundWords;
-    }
-
-    public List<String> getWords() {
-        return this.words;
     }
 }

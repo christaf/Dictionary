@@ -10,7 +10,7 @@ public class Dictionary {
     private static class Node {
         char value;
         boolean isEndOfWord;
-        Queue<String> translations;
+        Queue<String> translations = null;
         HashSet<Node> children = new HashSet<>();
 
         public Node(char value) {
