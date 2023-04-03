@@ -36,8 +36,8 @@ public class Main extends Application {
     private static final String DICTIONARY_FILE_NAME = "dictionary.txt";
     private static final String LETTERS = "abcdefghijklmnopqrstuvwxyz";
 
-    private List<String> words = new ArrayList<>();
-    private ObservableList<String> foundWords = FXCollections.observableArrayList();
+    private final List<String> words = new ArrayList<>();
+    private final ObservableList<String> foundWords = FXCollections.observableArrayList();
 
     private TextField searchField;
     private ListView<String> wordList;
@@ -210,7 +210,8 @@ public class Main extends Application {
 //
 //    @Override
 //    public void start(Stage stage) {
-//        DictionaryController controller = DictionaryController.getInstance(stage);
+//        Dictionary dictionary = new Dictionary();
+//        DictionaryController controller = DictionaryController.getInstance(stage, dictionary);
 //        controller.showSearchUI();
 //
 //    }

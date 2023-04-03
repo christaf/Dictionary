@@ -8,24 +8,27 @@ import javafx.stage.Stage;
 public class DictionaryController {
 
     private static DictionaryController instance;
+
+    private static final String fileName = "dictionary.txt";
     private final DictionaryModel model;
     private final DictionaryView view;
-    private Dictionary dictionary;
+    private final Dictionary dictionary;
     private final Stage stage;
 
-    public static DictionaryController getInstance(Stage stage) {
+    public static DictionaryController getInstance(Stage stage, Dictionary dictionary) {
         if (instance == null) {
-            instance = new DictionaryController(stage);
+            instance = new DictionaryController(stage, dictionary);
         }
         return instance;
     }
 
-    private DictionaryController(Stage stage) {
+    private DictionaryController(Stage stage, Dictionary dictionary) {
 
-        model = new DictionaryModel();
+        model = new DictionaryModel(fileName);
         view = new DictionaryView();
 
         this.stage = stage;
+        this.dictionary = dictionary;
         // Set up event handlers
         Scene searchScene = view.createSearchUI(this);
         Scene addScene = view.createAddWordUI(this);
@@ -37,6 +40,7 @@ public class DictionaryController {
             // your code here to handle the close event
             //System.out.println("Closing the application...");
             model.writeDictionary();
+
         });
 
         stage.setScene(searchScene);
