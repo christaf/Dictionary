@@ -2,6 +2,8 @@ package org.psk;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,6 +16,13 @@ import javafx.scene.layout.VBox;
 public class DictionaryView {
 
     private ListView<String> wordList;
+
+    private  TextField searchField;
+    private  Button addButton;
+    private  TextField addField;
+    private  Button saveButton;
+    private  Button cancelButton;
+
     //TODO BUTTON I TEXT FIELDY TU WRZUCIC
     //try to add buttons with their getters and setters eventOnAction so that we can manip
     //so that we can manipulate the content of our view :)
@@ -59,5 +68,13 @@ public class DictionaryView {
     public void displaySearchResults(ObservableList<String> results) {
         wordList.setItems(results);
     }
+    public void attachSearchHandlers(EventHandler<ActionEvent> searchHandler) {
+        addButton.setOnAction(searchHandler);
+        searchField.setOnAction(searchHandler);
+    }
 
+    public void attachAddHandlers(EventHandler<ActionEvent> saveHandler, EventHandler<ActionEvent> cancelHandler) {
+        saveButton.setOnAction(saveHandler);
+        cancelButton.setOnAction(cancelHandler);
+    }
 }

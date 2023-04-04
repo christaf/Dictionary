@@ -32,6 +32,11 @@ public class DictionaryController {
         // Set up event handlers
         Scene searchScene = view.createSearchUI(this);
         Scene addScene = view.createAddWordUI(this);
+// Attach event handlers for the search UI
+        view.attachSearchHandlers(event -> searchWords(searchField.getText()));
+
+        // Attach event handlers for the add word UI
+        view.attachAddHandlers(event -> saveWord(addField.getText()), event -> showSearchUI());
 
         model.readDictionary();
         System.out.println(model.words);
@@ -72,7 +77,4 @@ public class DictionaryController {
         showSearchUI();
     }
 
-    public DictionaryModel getModel() {
-        return this.model;
-    }
 }

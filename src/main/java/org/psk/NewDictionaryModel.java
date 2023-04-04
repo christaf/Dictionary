@@ -24,12 +24,18 @@ public class NewDictionaryModel {
         try (BufferedReader reader = new BufferedReader(new FileReader(DICTIONARY_FILE_NAME))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                words.add(line.toLowerCase());
+                String[] parts = line.split(" ");
+                if (parts.length == 2) {
+                    String word = parts[0].toLowerCase();
+                    String translation = parts[1];
+//                    Queue<String> translations = wordTranslationsMap.getOrDefault(word, new LinkedList<>());
+//                    translations.add(translation);
+//                    wordTranslationsMap.put(word, translations);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Collections.sort(words);
     }
 
     public void addWord(String word) {
