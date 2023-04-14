@@ -14,23 +14,23 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class DictionaryView {
-
+    private EventHandler<ActionEvent> addHandler;
+    private EventHandler<ActionEvent> saveHandler;
+    private EventHandler<ActionEvent> cancelHandler;
     private ListView<String> wordList;
 
-    private  TextField searchField;
-    private  Button addButton;
-    private  TextField addField;
-    private  Button saveButton;
-    private  Button cancelButton;
+    private TextField searchField;
+    private Button addButton;
+    private TextField addField;
+    private Button saveButton;
+    private Button cancelButton;
 
-    //TODO BUTTON I TEXT FIELDY TU WRZUCIC
-    //try to add buttons with their getters and setters eventOnAction so that we can manip
-    //so that we can manipulate the content of our view :)
     public Scene createSearchUI(DictionaryController controller) {
-        TextField searchField = new TextField();
+        searchField = new TextField();
         searchField.setPromptText("Enter a word to search");
 
-        Button addButton = new Button("Add Word");
+        addButton = new Button("Add Word");
+        addButton.setOnAction(addHandler); // set the event handler
 
         HBox searchBox = new HBox(10, searchField, addButton);
         searchBox.setAlignment(Pos.CENTER_LEFT);
@@ -41,20 +41,19 @@ public class DictionaryView {
         VBox searchPane = new VBox(10, searchBox, wordList);
         searchPane.setPadding(new Insets(10));
 
-
         return new Scene(searchPane);
     }
 
 
     public Scene createAddWordUI(DictionaryController controller) {
-
-        // Create the add word UI
-        TextField addField = new TextField();
+        addField = new TextField();
         addField.setPromptText("Enter a word to add");
 
-        Button saveButton = new Button("Save Word");
+        saveButton = new Button("Save Word");
+        saveButton.setOnAction(saveHandler); // set the event handler
 
-        Button cancelButton = new Button("Cancel");
+        cancelButton = new Button("Cancel");
+        cancelButton.setOnAction(cancelHandler); // set the event handler
 
         VBox addPane = new VBox(50, addField, saveButton, cancelButton);
         addPane.setPadding(new Insets(10));
@@ -68,6 +67,7 @@ public class DictionaryView {
     public void displaySearchResults(ObservableList<String> results) {
         wordList.setItems(results);
     }
+
     public void attachSearchHandlers(EventHandler<ActionEvent> searchHandler) {
         addButton.setOnAction(searchHandler);
         searchField.setOnAction(searchHandler);
@@ -76,5 +76,21 @@ public class DictionaryView {
     public void attachAddHandlers(EventHandler<ActionEvent> saveHandler, EventHandler<ActionEvent> cancelHandler) {
         saveButton.setOnAction(saveHandler);
         cancelButton.setOnAction(cancelHandler);
+    }
+
+    public TextField getAddField() {
+        return addField;
+    }
+
+    public void setAddHandler(EventHandler<ActionEvent> handler) {
+        addHandler = handler;
+    }
+
+    public void setSaveHandler(EventHandler<ActionEvent> handler) {
+        saveHandler = handler;
+    }
+
+    public void setCancelHandler(EventHandler<ActionEvent> handler) {
+        cancelHandler = handler;
     }
 }

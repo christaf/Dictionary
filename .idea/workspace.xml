@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="DictionaryView changes: GUI starts working&#10;NewDictionaryModel added: will contain adjusted methods compatible with class Dictionary">
+    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="Some structure changes&#10;1) name of dictionary file not static anymore">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2023_21_20_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2023_21_20__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dictionary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dictionary.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/NewDictionaryModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/NewDictionaryModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +127,6 @@
       <workItem from="1678804781066" duration="9307000" />
       <workItem from="1679989096632" duration="5334000" />
       <workItem from="1679998104975" duration="369000" />
-      <workItem from="1680599111488" duration="2281000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1678584230613</created>
@@ -182,14 +184,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679996186115</updated>
     </task>
-    <task id="LOCAL-00009" summary="DictionaryView changes: GUI starts working&#10;NewDictionaryModel added: will contain adjusted methods compatible with class Dictionary">
-      <created>1680554518487</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1680554518487</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +211,6 @@
     <MESSAGE value="App converted into MVC model, warning it doesnt work 2" />
     <MESSAGE value="Tries to make this MVC model work" />
     <MESSAGE value="Added tests classes&#10;DictionaryViewTest doesnt work yet" />
-    <MESSAGE value="DictionaryView changes: GUI starts working&#10;NewDictionaryModel added: will contain adjusted methods compatible with class Dictionary" />
-    <option name="LAST_COMMIT_MESSAGE" value="DictionaryView changes: GUI starts working&#10;NewDictionaryModel added: will contain adjusted methods compatible with class Dictionary" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tests classes&#10;DictionaryViewTest doesnt work yet" />
   </component>
 </project>

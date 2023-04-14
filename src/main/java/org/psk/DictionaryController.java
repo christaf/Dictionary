@@ -2,6 +2,7 @@ package org.psk;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -32,11 +33,6 @@ public class DictionaryController {
         // Set up event handlers
         Scene searchScene = view.createSearchUI(this);
         Scene addScene = view.createAddWordUI(this);
-// Attach event handlers for the search UI
-        view.attachSearchHandlers(event -> searchWords(searchField.getText()));
-
-        // Attach event handlers for the add word UI
-        view.attachAddHandlers(event -> saveWord(addField.getText()), event -> showSearchUI());
 
         model.readDictionary();
         System.out.println(model.words);
@@ -48,11 +44,13 @@ public class DictionaryController {
 
         });
 
+        // set handlers
+        view.setAddHandler(e -> stage.setScene(addScene));
+        view.setSaveHandler(e -> saveWord());
+        view.setCancelHandler(e -> showSearchUI());
+
         stage.setScene(searchScene);
-        //stage.setScene(addScene);
         stage.show();
-
-
     }
 
     public void searchWords(String searchTerm) {
@@ -60,17 +58,18 @@ public class DictionaryController {
         view.displaySearchResults(results);
     }
 
-    public void saveWord(String word) {
+    public void saveWord() {
+        String word = view.getAddField().getText();
         model.addWord(word);
         showSearchUI();
     }
 
     public void showSearchUI() {
-        view.createSearchUI(this);
+        stage.setScene(view.createSearchUI(this));
     }
 
     public void showAddWordUI() {
-        view.createAddWordUI(this);
+        stage.setScene(view.createAddWordUI(this));
     }
 
     public void handleCancelAction() {
