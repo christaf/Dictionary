@@ -2,9 +2,10 @@ package org.psk;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class DictionaryController {
 
@@ -31,8 +32,15 @@ public class DictionaryController {
         this.stage = stage;
         this.dictionary = dictionary;
         // Set up event handlers
-        Scene searchScene = view.createSearchUI(this);
         Scene addScene = view.createAddWordUI(this);
+        Scene searchScene = view.createSearchUI(this);
+
+        view.attachSearchHandlers(e -> {
+            String searchTerm = view.getAddField().getText();
+            System.out.println(searchTerm);
+            searchWords(searchTerm);
+        });
+
 
         model.readDictionary();
         System.out.println(model.words);
@@ -44,7 +52,7 @@ public class DictionaryController {
 
         });
 
-        // set handlers
+// set handlers
         view.setAddHandler(e -> stage.setScene(addScene));
         view.setSaveHandler(e -> saveWord());
         view.setCancelHandler(e -> showSearchUI());
@@ -54,8 +62,11 @@ public class DictionaryController {
     }
 
     public void searchWords(String searchTerm) {
+        ArrayList<String> list = new ArrayList<String>(model.searchWords(searchTerm));
+        System.out.println(list);
         ObservableList<String> results = FXCollections.observableArrayList(model.searchWords(searchTerm));
-        view.displaySearchResults(results);
+        System.out.println(results);
+       view.displaySearchResults(results);
     }
 
     public void saveWord() {

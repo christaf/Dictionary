@@ -1,5 +1,6 @@
 package org.psk;
 
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,12 +18,14 @@ public class DictionaryView {
     private EventHandler<ActionEvent> addHandler;
     private EventHandler<ActionEvent> saveHandler;
     private EventHandler<ActionEvent> cancelHandler;
+    private EventHandler<ActionEvent> searchHandler;
     private ListView<String> wordList;
 
     private TextField searchField;
     private Button addButton;
     private TextField addField;
     private Button saveButton;
+    private Button searchButton;
     private Button cancelButton;
 
     public Scene createSearchUI(DictionaryController controller) {
@@ -30,9 +33,10 @@ public class DictionaryView {
         searchField.setPromptText("Enter a word to search");
 
         addButton = new Button("Add Word");
-        addButton.setOnAction(addHandler); // set the event handler
-
-        HBox searchBox = new HBox(10, searchField, addButton);
+        addButton.setOnAction(e -> addHandler.handle(e)); // set the event handler
+        searchButton = new Button("Search");
+        searchButton.setOnAction(e -> searchHandler.handle(e));
+        HBox searchBox = new HBox(10, searchField,searchButton, addButton);
         searchBox.setAlignment(Pos.CENTER_LEFT);
 
         wordList = new ListView<>();
@@ -50,10 +54,10 @@ public class DictionaryView {
         addField.setPromptText("Enter a word to add");
 
         saveButton = new Button("Save Word");
-        saveButton.setOnAction(saveHandler); // set the event handler
+        saveButton.setOnAction(e -> saveHandler.handle(e)); // set the event handler
 
         cancelButton = new Button("Cancel");
-        cancelButton.setOnAction(cancelHandler); // set the event handler
+        cancelButton.setOnAction(e -> cancelHandler.handle(e)); // set the event handler
 
         VBox addPane = new VBox(50, addField, saveButton, cancelButton);
         addPane.setPadding(new Insets(10));
@@ -63,7 +67,9 @@ public class DictionaryView {
         return new Scene(addPane);
     }
 
-
+    public void attachSearchFieldListener(ChangeListener<String> listener) {
+        searchField.textProperty().addListener(listener);
+    }
     public void displaySearchResults(ObservableList<String> results) {
         wordList.setItems(results);
     }
@@ -82,6 +88,10 @@ public class DictionaryView {
         return addField;
     }
 
+    public ListView getWordList(){
+        return wordList;
+    }
+
     public void setAddHandler(EventHandler<ActionEvent> handler) {
         addHandler = handler;
     }
@@ -92,5 +102,9 @@ public class DictionaryView {
 
     public void setCancelHandler(EventHandler<ActionEvent> handler) {
         cancelHandler = handler;
+    }
+
+    public void setSearchHandler(EventHandler<ActionEvent> handler) {
+        searchHandler = handler;
     }
 }
