@@ -71,12 +71,13 @@ public class DictionaryView {
         searchField.textProperty().addListener(listener);
     }
     public void displaySearchResults(ObservableList<String> results) {
+        System.out.println(results);
         wordList.setItems(results);
     }
 
     public void attachSearchHandlers(EventHandler<ActionEvent> searchHandler) {
-        addButton.setOnAction(searchHandler);
-        searchField.setOnAction(searchHandler);
+        //addButton.setOnAction(searchHandler);
+        searchButton.setOnAction(searchHandler);
     }
 
     public void attachAddHandlers(EventHandler<ActionEvent> saveHandler, EventHandler<ActionEvent> cancelHandler) {
@@ -85,7 +86,10 @@ public class DictionaryView {
     }
 
     public TextField getAddField() {
-        return addField;
+        return this.addField;
+    }
+    public String getSearchText(){
+        return this.addField.getText();
     }
 
     public ListView getWordList(){

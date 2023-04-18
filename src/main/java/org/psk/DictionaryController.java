@@ -36,7 +36,7 @@ public class DictionaryController {
         Scene searchScene = view.createSearchUI(this);
 
         view.attachSearchHandlers(e -> {
-            String searchTerm = view.getAddField().getText();
+            String searchTerm = view.getSearchText();
             System.out.println(searchTerm);
             searchWords(searchTerm);
         });
@@ -56,6 +56,7 @@ public class DictionaryController {
         view.setAddHandler(e -> stage.setScene(addScene));
         view.setSaveHandler(e -> saveWord());
         view.setCancelHandler(e -> showSearchUI());
+        view.setSearchHandler(e -> searchWords(view.getSearchText()));
 
         stage.setScene(searchScene);
         stage.show();
