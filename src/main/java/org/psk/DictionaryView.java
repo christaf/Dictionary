@@ -98,6 +98,7 @@ import javafx.scene.layout.VBox;
 * */
 
 public class DictionaryView {
+    public ListView firstLanguageListView;
     private EventHandler<ActionEvent> addHandler;
     private EventHandler<ActionEvent> saveHandler;
     private EventHandler<ActionEvent> cancelHandler;
