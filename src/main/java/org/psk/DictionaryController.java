@@ -1,79 +1,42 @@
 package org.psk;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 public class DictionaryController {
+    private DictionaryModel model;
 
-    private static DictionaryController instance;
+    @FXML
+    private ListView<String> firstLanguageListView;
 
-    private static final String fileName = "dictionary.txt";
-    private final DictionaryModel model;
-    private final DictionaryView view;
-    private final Dictionary dictionary;
-    private final Stage stage;
+    @FXML
+    private ListView<String> secondLanguageListView;
 
-    public static DictionaryController getInstance(Stage stage, Dictionary dictionary) {
-        if (instance == null) {
-            instance = new DictionaryController(stage, dictionary);
-        }
-        return instance;
+    @FXML
+    private TextField searchTextField;
+
+    public void initialize() {
+        model = new DictionaryModel();
+        // TODO: Add initial data to model, if any
+        // ...
+        // Bind the list views to the data in the model
+        firstLanguageListView.setItems(FXCollections.observableList(model.getFirstLanguageWords()));
+        secondLanguageListView.setItems(FXCollections.observableList(model.getSecondLanguageWords()));
     }
 
-    private DictionaryController(Stage stage, Dictionary dictionary) {
-
-        model = new DictionaryModel(fileName);
-        view = new DictionaryView();
-
-        this.stage = stage;
-        this.dictionary = dictionary;
-        // Set up event handlers
-        Scene searchScene = view.createSearchUI(this);
-        Scene addScene = view.createAddWordUI(this);
-
-        model.readDictionary();
-        System.out.println(model.words);
-
-        stage.setOnCloseRequest(event -> {
-            // your code here to handle the close event
-            //System.out.println("Closing the application...");
-            model.writeDictionary();
-
-        });
-
-        // set handlers
-        view.setAddHandler(e -> stage.setScene(addScene));
-        view.setSaveHandler(e -> saveWord());
-        view.setCancelHandler(e -> showSearchUI());
-
-        stage.setScene(searchScene);
-        stage.show();
+    @FXML
+    public void updateSearchListView() {
+        String searchText = searchTextField.getText();
+        // TODO: Implement search functionality
+        // ...
     }
 
-    public void searchWords(String searchTerm) {
-        ObservableList<String> results = FXCollections.observableArrayList(model.searchWords(searchTerm));
-        view.displaySearchResults(results);
+    @FXML
+    public void switchLanguage() {
+        // TODO: Implement switching of languages
+        // ...
     }
-
-    public void saveWord() {
-        String word = view.getAddField().getText();
-        model.addWord(word);
-        showSearchUI();
-    }
-
-    public void showSearchUI() {
-        stage.setScene(view.createSearchUI(this));
-    }
-
-    public void showAddWordUI() {
-        stage.setScene(view.createAddWordUI(this));
-    }
-
-    public void handleCancelAction() {
-        showSearchUI();
-    }
-
 }

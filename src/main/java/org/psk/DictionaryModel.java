@@ -1,66 +1,27 @@
 package org.psk;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-/***
- * CLass DictionaryModel is responsible for managing the dictionary and searching for words.
- */
 public class DictionaryModel {
-    private final String DICTIONARY_FILE_NAME; // = "dictionary.txt";
+    private final List<String> firstLanguageWords;
+    private final List<String> secondLanguageWords;
 
-    public DictionaryModel(String FileName) {
-        DICTIONARY_FILE_NAME = FileName;
+    public DictionaryModel() {
+        firstLanguageWords = new ArrayList<>();
+        secondLanguageWords = new ArrayList<>();
     }
 
-    public final List<String> words = new ArrayList<>();
-
-    public void readDictionary() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(DICTIONARY_FILE_NAME))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                words.add(line.toLowerCase());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Collections.sort(words);
+    public void addWord(String firstLanguageWord, String secondLanguageWord) {
+        firstLanguageWords.add(firstLanguageWord);
+        secondLanguageWords.add(secondLanguageWord);
     }
 
-    public void addWord(String word) {
-        words.add(word.toLowerCase());
-        Collections.sort(words);
-        writeDictionary();
+    public List<String> getFirstLanguageWords() {
+        return firstLanguageWords;
     }
 
-    protected void writeDictionary() {
-        try (FileWriter writer = new FileWriter(DICTIONARY_FILE_NAME)) {
-            for (String word : words) {
-                writer.write(word + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<String> searchWords(String search) {
-        List<String> foundWords = new ArrayList<>();
-        if (search.length() > 0) {
-            for (String word : words) {
-                if (word.startsWith(search) || word.endsWith(search)) {
-                    foundWords.add(word);
-                }
-            }
-        }
-        return foundWords;
-    }
-
-    public List<String> getWords() {
-        return this.words;
+    public List<String> getSecondLanguageWords() {
+        return secondLanguageWords;
     }
 }
