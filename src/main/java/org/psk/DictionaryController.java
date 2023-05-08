@@ -19,7 +19,7 @@ public class DictionaryController {
     private TextField searchTextField;
 
     public void initialize() {
-        model = new DictionaryModel();
+        model = new DictionaryModel("tmp.txt");
         // TODO: Add initial data to model, if any
         // ...
         // Bind the list views to the data in the model

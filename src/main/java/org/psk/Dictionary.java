@@ -82,5 +82,59 @@ public class Dictionary {
         }
         return null;
     }
+
+    boolean isWord(String word){
+        Node currentNode = null;
+        for (Node child : root) {
+            if (child.value == word.charAt(0)) {
+                currentNode = child;
+                break;
+            }
+        }
+        if (currentNode == null) {
+            return false;
+        }
+        for (int i = 1; i < word.length(); i++) {
+            Node nextNode = null;
+            for (Node child : currentNode.children) {
+                if (child.value == word.charAt(i)) {
+                    nextNode = child;
+                    break;
+                }
+            }
+            if (nextNode == null) {
+                return false;
+            }
+            currentNode = nextNode;
+        }
+        return currentNode.isEndOfWord;
+    }
+
+    boolean isPartOfWord(String word){
+        Node currentNode = null;
+        for (Node child : root) {
+            if (child.value == word.charAt(0)) {
+                currentNode = child;
+                break;
+            }
+        }
+        if (currentNode == null) {
+            return false;
+        }
+        for (int i = 1; i < word.length(); i++) {
+            Node nextNode = null;
+            for (Node child : currentNode.children) {
+                if (child.value == word.charAt(i)) {
+                    nextNode = child;
+                    break;
+                }
+            }
+            if (nextNode == null) {
+                return false;
+            }
+            currentNode = nextNode;
+        }
+        return currentNode.children == null;
+    }
 }
 

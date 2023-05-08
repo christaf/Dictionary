@@ -15,15 +15,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL fxmlLocation = getClass().getResource("view.fxml");
-        System.out.println(fxmlLocation);
-        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/view.fxml"));
         DictionaryController controller = new DictionaryController();
-        loader.setController(controller);
-        //Parent root = loader.load();
-//        primaryStage.setScene(new Scene(root));
-//        primaryStage.show();
-    }
+        Parent root = loader.load();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+}
 
     @Override
     public void stop() {
