@@ -1,6 +1,8 @@
 import org.junit.Test;
 import org.psk.Dictionary;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Queue;
 
 import static org.junit.Assert.*;
@@ -87,6 +89,34 @@ public class DictionaryTest {
         assertNotNull(translations);
         assertEquals(1, translations.size());
         assertEquals("stereotype", translations.peek());
+    }
+    @Test
+    public void testPrintAllWords() {
+        Dictionary dictionary = new Dictionary();
+        dictionary.insert("apple", "manzana");
+        dictionary.insert("banana", "plátano");
+        dictionary.insert("orange", "naranja");
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        dictionary.printAllWords();
+
+        String expectedOutput = "apple\nbanana\norange\n";
+        assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @Test
+    public void testPrintAllWordsWithNoWords() {
+        Dictionary dictionary = new Dictionary();
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        dictionary.printAllWords();
+
+        String expectedOutput = "";
+        assertEquals(expectedOutput, outContent.toString());
     }
 
 }
