@@ -18,7 +18,24 @@ public class Dictionary {
         }
     }
 
+    public void printAllWords() {
+        for (Node child : root) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(child.value);
+            printAllWordsHelper(child, sb);
+        }
+    }
 
+    private void printAllWordsHelper(Node node, StringBuilder sb) {
+        if (node.isEndOfWord) {
+            System.out.println(sb.toString());
+        }
+        for (Node child : node.children) {
+            sb.append(child.value);
+            printAllWordsHelper(child, sb);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
     public void insert(String word, String translation) {
         Node currentNode = null;
         for (Node child : root) {
