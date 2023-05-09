@@ -1,5 +1,6 @@
 import org.junit.Test;
 import org.psk.Dictionary;
+
 import java.util.Queue;
 
 import static org.junit.Assert.*;
@@ -57,6 +58,35 @@ public class DictionaryTest {
         dictionary.insert("kot", "cat");
         translations = dictionary.search("goodbye");
         assertNull(translations);
+    }
+
+    @Test
+    public void testIsPartOfWord() {
+        Dictionary dict = new Dictionary();
+        dict.insert("hello", "hola");
+        assertTrue(dict.isPartOfWord("hel"));
+        assertFalse(dict.isPartOfWord("hol"));
+        assertFalse(dict.isPartOfWord("abc"));
+    }
+
+    @Test
+    public void testInsertPrefix() {
+        Dictionary dict = new Dictionary();
+        dict.insert("hello", "hola");
+        dict.insert("help", "ayuda");
+        assertTrue(dict.isWord("hello"));
+        assertTrue(dict.isWord("help"));
+        assertFalse(dict.isWord("he"));
+        assertTrue(dict.isPartOfWord("he"));
+    }
+    @Test
+    public void testInsertSpecialChars() {
+        Dictionary dict = new Dictionary();
+        dict.insert("cliché", "stereotype");
+        Queue<String> translations = dict.search("cliché");
+        assertNotNull(translations);
+        assertEquals(1, translations.size());
+        assertEquals("stereotype", translations.peek());
     }
 
 }

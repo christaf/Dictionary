@@ -23,8 +23,8 @@ public class DictionaryController {
         // TODO: Add initial data to model, if any
         // ...
         // Bind the list views to the data in the model
-        firstLanguageListView.setItems(FXCollections.observableList(model.getFirstLanguageWords()));
-        secondLanguageListView.setItems(FXCollections.observableList(model.getSecondLanguageWords()));
+        //firstLanguageListView.setItems(FXCollections.observableList(model.getFirstLanguageWords()));
+       // secondLanguageListView.setItems(FXCollections.observableList(model.getSecondLanguageWords()));
     }
 
     @FXML

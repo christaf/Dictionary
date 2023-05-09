@@ -83,7 +83,7 @@ public class Dictionary {
         return null;
     }
 
-    boolean isWord(String word){
+    public boolean isWord(String word){
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {
@@ -110,7 +110,7 @@ public class Dictionary {
         return currentNode.isEndOfWord;
     }
 
-    boolean isPartOfWord(String word){
+    public boolean isPartOfWord(String word){
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {
@@ -134,7 +134,7 @@ public class Dictionary {
             }
             currentNode = nextNode;
         }
-        return currentNode.children == null;
+        return currentNode.children != null;
     }
 }
 
