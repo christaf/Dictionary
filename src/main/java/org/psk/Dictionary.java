@@ -2,6 +2,7 @@ package org.psk;
 
 import java.util.LinkedList;
 import java.util.HashSet;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Dictionary {
@@ -36,6 +37,7 @@ public class Dictionary {
             sb.deleteCharAt(sb.length() - 1);
         }
     }
+
     public void insert(String word, String translation) {
         Node currentNode = null;
         for (Node child : root) {
@@ -69,8 +71,17 @@ public class Dictionary {
         currentNode.translations.offer(translation);
     }
 
+    public Queue<String> search2(String word) {
+        if (isWord(word)) System.out.println("is a word");
+        if (isPartOfWord(word)) System.out.println("is a port of word");
+        Queue<String> result = search(word);
+        for (String s : result) {
+            System.out.println(s);
+        }
+        return null;
+    }
 
-    public Queue<String> search(String word) {
+    public Node findEnd(String word) {
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {
@@ -78,9 +89,8 @@ public class Dictionary {
                 break;
             }
         }
-        if (currentNode == null) {
-            return null;
-        }
+        if (currentNode == null) return null;
+
         for (int i = 1; i < word.length(); i++) {
             Node nextNode = null;
             for (Node child : currentNode.children) {
@@ -95,9 +105,32 @@ public class Dictionary {
             currentNode = nextNode;
         }
         if (currentNode.isEndOfWord) {
-            return currentNode.translations;
+            return currentNode;
         }
         return null;
+    }
+
+    public Queue<String> search(String word) {
+        int counter = 0;
+        Node endOfTheWord = findEnd(word);
+        if (endOfTheWord == null) return null;
+        Queue<String> result = new LinkedList<>(endOfTheWord.translations);
+//        TODO zeby pokazywalo wszystkie ktore sie zaczynaja od tego sformulowania
+//        counter += 1;
+//        Node tmp = endOfTheWord;
+//        Node prev = endOfTheWord;
+//        while (tmp != null) {
+//            if (counter > 10) break;
+//            for (Node child : endOfTheWord.children) {
+//                if (child.isEndOfWord) {
+//                    result.addAll(child.translations);
+//                    counter += 1;
+//                }
+//                tmp = child;
+//            }
+//            tmp = prev;
+//        }
+        return result;
     }
 
     public boolean isWord(String word){
@@ -127,7 +160,7 @@ public class Dictionary {
         return currentNode.isEndOfWord;
     }
 
-    public boolean isPartOfWord(String word){
+    public boolean isPartOfWord(String word) {
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {

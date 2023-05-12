@@ -44,6 +44,6 @@ public class DictionaryModel {
     }
 
     public Queue<String> search(String word) {
-        return dictionary.search(word);
+        return dictionary.search2(word);
     }
 }

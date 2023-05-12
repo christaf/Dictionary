@@ -1,12 +1,14 @@
 package org.psk;
 
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+
+import java.util.Queue;
 
 public class DictionaryController {
+    public ToggleButton switchLanguageButton;
     private DictionaryModel model;
 
     @FXML
@@ -20,6 +22,7 @@ public class DictionaryController {
 
     public void initialize() {
         model = new DictionaryModel("tmp.txt");
+        //this.searchTextField
         // TODO: Add initial data to model, if any
         // ...
         // Bind the list views to the data in the model
@@ -30,6 +33,14 @@ public class DictionaryController {
     @FXML
     public void updateSearchListView() {
         String searchText = searchTextField.getText();
+        System.out.println(searchText);
+        Queue<String> result = this.model.search(searchText);
+        if(result == null){
+            return;
+        }
+        for(String s: result){
+            System.out.println(s);
+        }
         // TODO: Implement search functionality
         // ...
     }
