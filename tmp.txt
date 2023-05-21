@@ -1,3 +1,4 @@
 uno,jeden
 apple,jabłko
 naranja,orange
+unoo,jednoO

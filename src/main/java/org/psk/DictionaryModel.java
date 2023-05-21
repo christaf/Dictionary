@@ -1,7 +1,6 @@
 package org.psk;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class DictionaryModel {
         return secondLanguageWords;
     }
 
-    public Queue<String> search(String word) {
+    public Queue<String> findTranslationQueue(String word) {
         return dictionary.search2(word);
     }
 }

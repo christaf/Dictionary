@@ -7,7 +7,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
-import java.util.ArrayList;
 import java.util.Queue;
 
 public class DictionaryController {
@@ -35,15 +34,12 @@ public class DictionaryController {
 
     @FXML
     public void updateSearchListView() {
+//        TODO Przenieść to do modelu
         ObservableList<String> items = FXCollections.observableArrayList();
         String searchText = searchTextField.getText();
         if(searchText.equals(""))return;
         System.out.println(searchText);
-//        find other words and add
-//        ArrayList<String> words = new ArrayList<>();
-//        words.add(searchText);
-        Queue<String> result = this.model.search(searchText);
-
+        Queue<String> result = this.model.findTranslationQueue(searchText);
         if(result == null){
             return;
         }
@@ -51,12 +47,9 @@ public class DictionaryController {
             System.out.println(s);
             items.add(s);
         }
-        System.out.println("queue" + result);
         secondLanguageListView.setItems(items);
-        System.out.println("a " + secondLanguageListView.getItems());
-//        ListView listView = new ListView<>();
-//        firstLanguageListView.setItems((ObservableList<String>) words);
-//        secondLanguageListView.setItems((ObservableList<String>) result);
+        System.out.println(secondLanguageListView.getItems());
+
         // TODO: Implement search functionality
         // ...
     }
