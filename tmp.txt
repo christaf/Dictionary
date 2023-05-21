@@ -1,5 +1,3 @@
-a,b
-b,c
-c,e
-ab,f
-abcde,f
+uno,jeden
+apple,jabłko
+naranja,orange
