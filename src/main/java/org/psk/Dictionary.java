@@ -75,10 +75,12 @@ public class Dictionary {
         if (isWord(word)) System.out.println("is a word");
         if (isPartOfWord(word)) System.out.println("is a port of word");
         Queue<String> result = search(word);
-        for (String s : result) {
-            System.out.println(s);
+        if (result != null) {
+            for (String s : result) {
+                System.out.println(s);
+            }
         }
-        return null;
+        return result;
     }
 
     public Node findEnd(String word) {
@@ -133,7 +135,7 @@ public class Dictionary {
         return result;
     }
 
-    public boolean isWord(String word){
+    public boolean isWord(String word) {
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {

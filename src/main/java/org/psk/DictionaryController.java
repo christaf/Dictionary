@@ -35,18 +35,25 @@ public class DictionaryController {
 
     @FXML
     public void updateSearchListView() {
+        ObservableList<String> items = FXCollections.observableArrayList();
         String searchText = searchTextField.getText();
+        if(searchText.equals(""))return;
         System.out.println(searchText);
 //        find other words and add
 //        ArrayList<String> words = new ArrayList<>();
 //        words.add(searchText);
         Queue<String> result = this.model.search(searchText);
+
         if(result == null){
             return;
         }
         for(String s: result){
             System.out.println(s);
+            items.add(s);
         }
+        System.out.println("queue" + result);
+        secondLanguageListView.setItems(items);
+        System.out.println("a " + secondLanguageListView.getItems());
 //        ListView listView = new ListView<>();
 //        firstLanguageListView.setItems((ObservableList<String>) words);
 //        secondLanguageListView.setItems((ObservableList<String>) result);

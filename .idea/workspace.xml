@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="New functions which return node instead of boolean&#10;Assigned text field to its id in fxml">
+    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="Unresizable size of window">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tmp.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683917436952</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Unresizable size of window">
+      <created>1684681738509</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684681738509</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +288,7 @@
     <MESSAGE value="New beginning" />
     <MESSAGE value="Added new functions to Dictionary class and their tests" />
     <MESSAGE value="New functions which return node instead of boolean&#10;Assigned text field to its id in fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="New functions which return node instead of boolean&#10;Assigned text field to its id in fxml" />
+    <MESSAGE value="Unresizable size of window" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unresizable size of window" />
   </component>
 </project>
