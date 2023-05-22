@@ -24,12 +24,6 @@ public class DictionaryController {
 
     public void initialize() {
         model = new DictionaryModel("tmp.txt");
-        //this.searchTextField
-        // TODO: Add initial data to model, if any
-        // ...
-        // Bind the list views to the data in the model
-        //firstLanguageListView.setItems(FXCollections.observableList(model.getFirstLanguageWords()));
-       // secondLanguageListView.setItems(FXCollections.observableList(model.getSecondLanguageWords()));
     }
 
     @FXML
@@ -37,26 +31,24 @@ public class DictionaryController {
 //        TODO Przenieść to do modelu
         ObservableList<String> items = FXCollections.observableArrayList();
         String searchText = searchTextField.getText();
-        if(searchText.equals(""))return;
+        if (searchText.equals("")) return;
         System.out.println(searchText);
         Queue<String> result = this.model.findTranslationQueue(searchText);
-        if(result == null){
+        if (result == null) {
             return;
         }
-        for(String s: result){
+        for (String s : result) {
             System.out.println(s);
             items.add(s);
         }
         secondLanguageListView.setItems(items);
         System.out.println(secondLanguageListView.getItems());
 
-        // TODO: Implement search functionality
-        // ...
     }
 
     @FXML
     public void switchLanguage() {
         // TODO: Implement switching of languages
-        // ...
+
     }
 }
