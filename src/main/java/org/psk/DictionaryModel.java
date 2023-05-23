@@ -34,6 +34,10 @@ public class DictionaryModel {
         secondLanguageWords.add(secondLanguageWord);
     }
 
+    public void editWord(String oldWord, String newWord){
+
+    }
+
     public List<String> getFirstLanguageWords() {
         return firstLanguageWords;
     }

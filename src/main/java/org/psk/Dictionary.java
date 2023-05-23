@@ -8,17 +8,6 @@ import java.util.Queue;
 public class Dictionary {
     private final HashSet<Node> root = new HashSet<>();
 
-    private static class Node {
-        char value;
-        boolean isEndOfWord;
-        Queue<String> translations = null;
-        HashSet<Node> children = new HashSet<>();
-
-        public Node(char value) {
-            this.value = value;
-        }
-    }
-
     public void printAllWords() {
         for (Node child : root) {
             StringBuilder sb = new StringBuilder();
