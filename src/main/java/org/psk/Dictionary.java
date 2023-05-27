@@ -14,6 +14,7 @@ public class Dictionary {
     }
 
     public void addWord(String word) {
+//        TODO Add parent references ...
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {
@@ -149,6 +150,21 @@ public class Dictionary {
             return false;
         HashSet<Node> children = end.children;
         return !children.isEmpty();
+    }
+
+    public boolean exploreNode(){
+//        TODO support function for searching for phrases
+        return false;
+    }
+    public Queue<Node> wordsThatStartsWithPhrase(String word){
+        Node end = findEnd(word);
+        Queue<Node> otherPhrases= new LinkedList<>();
+
+        if(end == null) return otherPhrases;
+
+
+
+        return null;
     }
 }
 
