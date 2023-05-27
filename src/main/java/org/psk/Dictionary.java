@@ -2,32 +2,18 @@ package org.psk;
 
 import java.util.LinkedList;
 import java.util.HashSet;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Dictionary {
     private final HashSet<Node> root = new HashSet<>();
 
-    public void printAllWords() {
-        for (Node child : root) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(child.value);
-            printAllWordsHelper(child, sb);
-        }
+    public void addTranslation(String word, String translation) {
+        Node end = findEnd(word);
+        if (end != null)
+            end.translations.add(translation);
     }
 
-    private void printAllWordsHelper(Node node, StringBuilder sb) {
-        if (node.isEndOfWord) {
-            System.out.println(sb.toString());
-        }
-        for (Node child : node.children) {
-            sb.append(child.value);
-            printAllWordsHelper(child, sb);
-            sb.deleteCharAt(sb.length() - 1);
-        }
-    }
-
-    public void insert(String word, String translation) {
+    public void addWord(String word) {
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {
@@ -57,10 +43,33 @@ public class Dictionary {
         if (currentNode.translations == null) {
             currentNode.translations = new LinkedList<>();
         }
-        currentNode.translations.offer(translation);
     }
 
-    public Queue<String> search2(String word) {
+    public void printAllWords() {
+        for (Node child : root) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(child.value);
+            printAllWordsHelper(child, sb);
+        }
+    }
+
+    private void printAllWordsHelper(Node node, StringBuilder sb) {
+        if (node.isEndOfWord) {
+            System.out.println(sb.toString());
+        }
+        for (Node child : node.children) {
+            sb.append(child.value);
+            printAllWordsHelper(child, sb);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
+
+    public void insert(String word, String translation) {
+        addWord(word);
+        addTranslation(word, translation);
+    }
+
+    public Queue<String> findTranslationsQueueByWord(String word) {
         if (isWord(word)) System.out.println("is a word");
         if (isPartOfWord(word)) System.out.println("is a port of word");
         Queue<String> result = search(word);
@@ -125,57 +134,43 @@ public class Dictionary {
     }
 
     public boolean isWord(String word) {
-        Node currentNode = null;
-        for (Node child : root) {
-            if (child.value == word.charAt(0)) {
-                currentNode = child;
-                break;
-            }
-        }
-        if (currentNode == null) {
+        Node end = findEnd(word);
+        if(end == null)
             return false;
-        }
-        for (int i = 1; i < word.length(); i++) {
-            Node nextNode = null;
-            for (Node child : currentNode.children) {
-                if (child.value == word.charAt(i)) {
-                    nextNode = child;
-                    break;
-                }
-            }
-            if (nextNode == null) {
-                return false;
-            }
-            currentNode = nextNode;
-        }
-        return currentNode.isEndOfWord;
+        return (end.isEndOfWord);
     }
 
     public boolean isPartOfWord(String word) {
-        Node currentNode = null;
-        for (Node child : root) {
-            if (child.value == word.charAt(0)) {
-                currentNode = child;
-                break;
-            }
-        }
-        if (currentNode == null) {
+        Node end = findEnd(word);
+        if (end == null)
             return false;
-        }
-        for (int i = 1; i < word.length(); i++) {
-            Node nextNode = null;
-            for (Node child : currentNode.children) {
-                if (child.value == word.charAt(i)) {
-                    nextNode = child;
-                    break;
-                }
-            }
-            if (nextNode == null) {
-                return false;
-            }
-            currentNode = nextNode;
-        }
-        return currentNode.children != null;
+        HashSet<Node> children = end.children;
+        return !children.isEmpty();
+//
+//        Node currentNode = null;
+//        for (Node child : root) {
+//            if (child.value == word.charAt(0)) {
+//                currentNode = child;
+//                break;
+//            }
+//        }
+//        if (currentNode == null) {
+//            return false;
+//        }
+//        for (int i = 1; i < word.length(); i++) {
+//            Node nextNode = null;
+//            for (Node child : currentNode.children) {
+//                if (child.value == word.charAt(i)) {
+//                    nextNode = child;
+//                    break;
+//                }
+//            }
+//            if (nextNode == null) {
+//                return false;
+//            }
+//            currentNode = nextNode;
+//        }
+//        return currentNode.children != null;
     }
 }
 

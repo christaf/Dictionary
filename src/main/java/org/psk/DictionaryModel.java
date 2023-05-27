@@ -34,7 +34,7 @@ public class DictionaryModel {
         secondLanguageWords.add(secondLanguageWord);
     }
 
-    public void editWord(String oldWord, String newWord){
+    public void editWord(String oldWord, String newWord) {
 
     }
 
@@ -47,6 +47,10 @@ public class DictionaryModel {
     }
 
     public Queue<String> findTranslationQueue(String word) {
-        return dictionary.search2(word);
+        return dictionary.findTranslationsQueueByWord(word);
+    }
+
+    public void insertTranslation(String word, String translation) {
+        dictionary.findEnd(word).translations.add(translation);
     }
 }
