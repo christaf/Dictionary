@@ -55,7 +55,7 @@ public class DictionaryModel {
         dictionary.findEnd(word).translations.add(translation);
     }
 
-    public void printSucessors(String word){
+    public void printSuccessors(String word){
         if(word != null && !word.equals(""))
             dictionary.printSuccessors(word);
     }
