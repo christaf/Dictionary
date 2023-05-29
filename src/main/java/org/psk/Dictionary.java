@@ -1,11 +1,20 @@
 package org.psk;
 
-import java.util.LinkedList;
-import java.util.HashSet;
-import java.util.Queue;
+import com.sun.source.tree.Tree;
+
+import java.util.*;
 
 public class Dictionary {
-    public final HashSet<Node> root = new HashSet<>();
+
+    private static class nodeComparator implements Comparator<Node> {
+
+        @Override
+        public int compare(Node o1, Node o2) {
+            return o1.value - o2.value;
+        }
+    }
+
+    public TreeSet<Node> root = new TreeSet<Node>(new nodeComparator());
 
     public void addTranslation(String word, String translation) {
         Node end = findEnd(word);
@@ -58,7 +67,7 @@ public class Dictionary {
 
     private void printAllWordsHelper(Node node, StringBuilder sb) {
         if (node.isEndOfWord) {
-            if(sb.toString().equals(""))
+            if (sb.toString().equals("") || sb.toString().equals("\n") || sb.toString().equals(" "))
                 return;
             System.out.println(sb.toString());
         }
@@ -75,7 +84,7 @@ public class Dictionary {
         if (end == null) {
             return;
         }
-        while(end != null){
+        while (end != null) {
             stringBuilder.append(end.value);
             end = end.parent;
         }

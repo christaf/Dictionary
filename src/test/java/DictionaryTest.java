@@ -83,6 +83,7 @@ public class DictionaryTest {
         assertFalse(dict.isWord("he"));
 //        assertTrue(dict.isPartOfWord("he"));
     }
+
     @Test
     public void testInsertSpecialChars() {
         Dictionary dict = new Dictionary();
@@ -92,8 +93,16 @@ public class DictionaryTest {
         assertEquals(1, translations.size());
         assertEquals("stereotype", translations.peek());
     }
+
     @Test
     public void testPrintAllWords() {
+//        TODO it may be better solution to the problem
+//        public final static char CR  = (char) 0x0D;
+//public final static char LF  = (char) 0x0A;
+//
+//public final static String CRLF  = "" + CR + LF;     // "" forces conversion to string
+//
+//String twoLines = "Line1" + CRLF + "Line2";   // 12 characters
         Dictionary dictionary = new Dictionary();
         dictionary.insert("apple", "manzana");
 
@@ -102,8 +111,8 @@ public class DictionaryTest {
 
         dictionary.printAllWords();
 
-        String oneWordOutput = "apple\n";
-//        assertEquals(oneWordOutput, oneWord.toString());
+        String oneWordOutput = "apple\r\n";
+        assertEquals(oneWordOutput, oneWord.toString());
 
         dictionary.insert("banana", "plátano");
         dictionary.insert("orange", "naranja");
@@ -113,7 +122,7 @@ public class DictionaryTest {
 
         dictionary.printAllWords();
 
-        String otherWordsOutput = "apple\nbanana\norange\n";
+        String otherWordsOutput = "apple\r\nbanana\r\norange\r\n";
         assertEquals(otherWordsOutput, otherWords.toString());
     }
 
@@ -129,6 +138,7 @@ public class DictionaryTest {
         String expectedOutput = "";
         assertEquals(expectedOutput, outContent.toString());
     }
+
     @Test
     public void testParentAssignment() {
         Dictionary dictionary = new Dictionary();
@@ -138,23 +148,18 @@ public class DictionaryTest {
 
         // Test parent assignment for 'l' in "hello"
         Node helloNode = getNodeByValue(dictionary, 'h');
-        Node lNode = getNodeByValue(Objects.requireNonNull(helloNode), 'l');
-        assertEquals('h', Objects.requireNonNull(lNode).parent.value);
-        assertEquals(helloNode, lNode.parent);
-
-        // Test parent assignment for 'o' in "hello"
-        Node oNode = getNodeByValue(helloNode, 'o');
-        assertEquals('l', Objects.requireNonNull(oNode).parent.value);
-        assertEquals(lNode, oNode.parent);
+        Node eNode = getNodeByValue(helloNode, 'e');
+        assertEquals('h', Objects.requireNonNull(eNode).parent.value);
+        assertEquals(helloNode, eNode.parent);
 
         // Test parent assignment for 'h' in "hey"
         Node heyNode = getNodeByValue(dictionary, 'h');
         assertEquals(null, heyNode.parent);
 
         // Test parent assignment for 'y' in "hey"
-        Node yNode = getNodeByValue(heyNode, 'y');
-        assertEquals('h', yNode.parent.value);
-        assertEquals(heyNode, yNode.parent);
+        Node yNode = dictionary.findEnd("hey");
+        assertEquals('e', yNode.parent.value);
+        assertEquals(eNode, yNode.parent);
     }
 
     private Node getNodeByValue(Dictionary dictionary, char value) {
@@ -167,6 +172,7 @@ public class DictionaryTest {
     }
 
     private Node getNodeByValue(Node parentNode, char value) {
+        if (parentNode == null) return null;
         for (Node node : parentNode.children) {
             if (node.value == value) {
                 return node;
