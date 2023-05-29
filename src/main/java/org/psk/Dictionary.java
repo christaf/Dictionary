@@ -5,7 +5,7 @@ import java.util.*;
 public class Dictionary {
 
     private static class nodeComparator implements Comparator<Node> {
-
+        //TODO poprawic zeby dzialal poprawnie xD
         @Override
         public int compare(Node o1, Node o2) {
             return o1.value - o2.value;
@@ -15,7 +15,7 @@ public class Dictionary {
     public TreeSet<Node> root = new TreeSet<Node>(new nodeComparator());
 
     public void addTranslation(String word, String translation) {
-        Node end = findEnd(word);
+        Node end = findEndOfWord(word);
         if (end != null)
             end.translations.add(translation);
     }
@@ -76,7 +76,7 @@ public class Dictionary {
     }
 
     public void printSuccessors(String word) {
-        Node end = findEnd(word);
+        Node end = findEndOfWord(word);
         StringBuilder stringBuilder = new StringBuilder();
         if (end == null) {
             return;
@@ -95,15 +95,15 @@ public class Dictionary {
     }
 
     public Queue<String> findTranslationsQueueByWord(String word) {
-        Node endOfTheWord = findEnd(word);
+        Node endOfTheWord = findEndOfWord(word);
         if (endOfTheWord == null) return null;
 
         boolean isEndOfTHeWord = endOfTheWord.isEndOfWord;
-        if(!isEndOfTHeWord) return null;
+        if (!isEndOfTHeWord) return null;
 
         Queue<String> result = endOfTheWord.translations;
         if (result != null) {
-            if(result.isEmpty()) return null;
+            if (result.isEmpty()) return null;
             for (String s : result) {
                 System.out.println(s);
             }
@@ -111,7 +111,7 @@ public class Dictionary {
         return result;
     }
 
-    public Node findEnd(String word) {
+    public Node findEndOfWord(String word) {
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {
@@ -140,34 +140,83 @@ public class Dictionary {
         return null;
     }
 
+    public Node findEndOfPhrase(String word) {
+        Node currentNode = null;
+        for (Node child : root) {
+            if (child.value == word.charAt(0)) {
+                currentNode = child;
+                break;
+            }
+        }
+        if (currentNode == null) return null;
+
+        for (int i = 1; i < word.length(); i++) {
+            Node nextNode = null;
+            for (Node child : currentNode.children) {
+                if (child.value == word.charAt(i)) {
+                    nextNode = child;
+                    break;
+                }
+            }
+            if (nextNode == null) {
+                return null;
+            }
+            currentNode = nextNode;
+        }
+
+        return currentNode;
+
+    }
+
     public boolean isWord(String word) {
-        Node end = findEnd(word);
+        Node end = findEndOfWord(word);
         if (end == null)
             return false;
         return (end.isEndOfWord);
     }
 
     public boolean isPartOfWord(String word) {
-        Node end = findEnd(word);
+        Node end = findEndOfWord(word);
         if (end == null)
             return false;
         HashSet<Node> children = end.children;
         return !children.isEmpty();
     }
 
-    public boolean exploreNode() {
+    public void exploreNode(StringBuilder stringBuilder, Node currentNode, Queue<String> resultWordList) {
+        if (currentNode == null)
+            return;
+        stringBuilder.append(currentNode.value);
+        if (currentNode.isEndOfWord) {
+            String phrase = stringBuilder.toString();
+            System.out.println(phrase);
+            resultWordList.add(phrase);
+        }
+        if (currentNode.children.size() != 0) {
+            for (Node child : currentNode.children) {
+                exploreNode(stringBuilder, child, resultWordList);
+            }
+        }
+
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
 //        TODO support function for searching for phrases
-        return false;
     }
 
-    public Queue<Node> wordsThatStartsWithPhrase(String word) {
-        Node end = findEnd(word);
-        Queue<Node> otherPhrases = new LinkedList<>();
+    public Queue<String> wordsThatStartsWithPhrase(String word) {
+        Node wordEndNode = findEndOfPhrase(word);
+        Queue<String> otherPhrases = new LinkedList<>();
+        if (wordEndNode == null)
+            return otherPhrases;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(word);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        exploreNode(stringBuilder, wordEndNode, otherPhrases);
+        for (String s : otherPhrases) {
+            System.out.println(s);
+        }
 
-        if (end == null) return otherPhrases;
-
-
-        return null;
+        return otherPhrases;
     }
 }
 

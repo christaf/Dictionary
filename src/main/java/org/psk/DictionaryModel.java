@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
@@ -52,11 +53,21 @@ public class DictionaryModel {
     }
 
     public void insertTranslation(String word, String translation) {
-        dictionary.findEnd(word).translations.add(translation);
+        dictionary.findEndOfWord(word).translations.add(translation);
     }
 
-    public void printSuccessors(String word){
-        if(word != null && !word.equals(""))
+    public void printSuccessors(String word) {
+        if (word != null && !word.equals(""))
             dictionary.printSuccessors(word);
+    }
+
+    public void printOtherPhrases(String word) {
+        Queue<String> result = new LinkedList<>(dictionary.wordsThatStartsWithPhrase(word));
+        System.out.println("w");
+        if (result != null) return;
+        for (String phrases : result) {
+            System.out.println("hej");
+            System.out.println(phrases);
+        }
     }
 }

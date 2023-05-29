@@ -2,3 +2,5 @@ uno,jeden
 apple,jabłko
 naranja,orange
 unoo,jednoO
+unabra,kadabra
+unbelievable,niemozliwe

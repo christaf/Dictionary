@@ -4,6 +4,7 @@ import org.psk.Node;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
 
@@ -157,9 +158,35 @@ public class DictionaryTest {
         assertEquals(null, heyNode.parent);
 
         // Test parent assignment for 'y' in "hey"
-        Node yNode = dictionary.findEnd("hey");
+        Node yNode = dictionary.findEndOfWord("hey");
         assertEquals('e', yNode.parent.value);
         assertEquals(eNode, yNode.parent);
+    }
+
+    @Test
+    public void testWordsThatStartsWithPhrase() {
+        // Create an instance of the class containing the method to be tested
+        Dictionary dictionary = new Dictionary();
+        dictionary.addWord("apple");
+        dictionary.addTranslation("apple", "jablko");
+
+        dictionary.addWord("apples");
+        dictionary.addTranslation("apples", "jablka");
+
+        dictionary.addWord("applejuice");
+        dictionary.addTranslation("applejuice", "jablkowysok");
+
+        // Call the method and get the result
+        Queue<String> result = dictionary.wordsThatStartsWithPhrase("apple");
+
+        // Create a sample queue of expected phrases
+        Queue<String> expectedPhrases = new LinkedList<>();
+        expectedPhrases.add("apple");
+        expectedPhrases.add("apples");
+        expectedPhrases.add("applejuice");
+
+        // Assert that the result matches the expected queue
+        assertEquals(expectedPhrases, result);
     }
 
     private Node getNodeByValue(Dictionary dictionary, char value) {
