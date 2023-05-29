@@ -112,30 +112,9 @@ public class Dictionary {
     }
 
     public Node findEndOfWord(String word) {
-        Node currentNode = null;
-        for (Node child : root) {
-            if (child.value == word.charAt(0)) {
-                currentNode = child;
-                break;
-            }
-        }
-        if (currentNode == null) return null;
-
-        for (int i = 1; i < word.length(); i++) {
-            Node nextNode = null;
-            for (Node child : currentNode.children) {
-                if (child.value == word.charAt(i)) {
-                    nextNode = child;
-                    break;
-                }
-            }
-            if (nextNode == null) {
-                return null;
-            }
-            currentNode = nextNode;
-        }
-        if (currentNode.isEndOfWord) {
-            return currentNode;
+        Node endNode = findEndOfPhrase(word);
+        if (endNode != null && endNode.isEndOfWord) {
+            return endNode;
         }
         return null;
     }
