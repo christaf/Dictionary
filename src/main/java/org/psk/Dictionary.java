@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Queue;
 
 public class Dictionary {
-    private final HashSet<Node> root = new HashSet<>();
+    public final HashSet<Node> root = new HashSet<>();
 
     public void addTranslation(String word, String translation) {
         Node end = findEnd(word);
@@ -31,6 +31,7 @@ public class Dictionary {
             for (Node child : currentNode.children) {
                 if (child.value == word.charAt(i)) {
                     nextNode = child;
+                    child.parent = currentNode;
                     break;
                 }
             }
@@ -38,6 +39,7 @@ public class Dictionary {
                 nextNode = new Node(word.charAt(i));
                 currentNode.children.add(nextNode);
             }
+            nextNode.parent = currentNode;
             currentNode = nextNode;
         }
         currentNode.isEndOfWord = true;
@@ -56,6 +58,8 @@ public class Dictionary {
 
     private void printAllWordsHelper(Node node, StringBuilder sb) {
         if (node.isEndOfWord) {
+            if(sb.toString().equals(""))
+                return;
             System.out.println(sb.toString());
         }
         for (Node child : node.children) {
@@ -65,6 +69,20 @@ public class Dictionary {
         }
     }
 
+    public void printSucessors(String word) {
+        Node end = findEnd(word);
+        StringBuilder stringBuilder = new StringBuilder();
+        if (end == null) {
+            return;
+        }
+        while(end != null){
+            stringBuilder.append(end.value);
+            end = end.parent;
+        }
+        System.out.println(stringBuilder.toString());
+    }
+
+
     public void insert(String word, String translation) {
         addWord(word);
         addTranslation(word, translation);
@@ -72,7 +90,7 @@ public class Dictionary {
 
     public Queue<String> findTranslationsQueueByWord(String word) {
         if (isWord(word)) System.out.println("is a word");
-        if (isPartOfWord(word)){
+        if (isPartOfWord(word)) {
             System.out.println("is a part of word");
         }
 
@@ -139,7 +157,7 @@ public class Dictionary {
 
     public boolean isWord(String word) {
         Node end = findEnd(word);
-        if(end == null)
+        if (end == null)
             return false;
         return (end.isEndOfWord);
     }
@@ -152,16 +170,16 @@ public class Dictionary {
         return !children.isEmpty();
     }
 
-    public boolean exploreNode(){
+    public boolean exploreNode() {
 //        TODO support function for searching for phrases
         return false;
     }
-    public Queue<Node> wordsThatStartsWithPhrase(String word){
+
+    public Queue<Node> wordsThatStartsWithPhrase(String word) {
         Node end = findEnd(word);
-        Queue<Node> otherPhrases= new LinkedList<>();
+        Queue<Node> otherPhrases = new LinkedList<>();
 
-        if(end == null) return otherPhrases;
-
+        if (end == null) return otherPhrases;
 
 
         return null;

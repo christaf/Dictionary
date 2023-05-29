@@ -27,6 +27,7 @@ public class DictionaryModel {
         }
         firstLanguageWords = new ArrayList<>();
         secondLanguageWords = new ArrayList<>();
+        dictionary.printAllWords();
     }
 
     public void addWord(String firstLanguageWord, String secondLanguageWord) {
@@ -52,5 +53,10 @@ public class DictionaryModel {
 
     public void insertTranslation(String word, String translation) {
         dictionary.findEnd(word).translations.add(translation);
+    }
+
+    public void printSucessors(String word){
+        if(word != null)
+            dictionary.printSucessors(word);
     }
 }

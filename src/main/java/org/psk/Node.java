@@ -4,12 +4,12 @@ import java.util.HashSet;
 import java.util.Queue;
 
 public class Node {
-    char value;
+    public char value;
     boolean isEndOfWord;
     Queue<String> translations = null;
-    HashSet<Node> children = new HashSet<>();
+    public HashSet<Node> children = new HashSet<>();
 
-    Node parent = null;
+    public Node parent = null;
 
     public Node(char value) {
         this.value = value;

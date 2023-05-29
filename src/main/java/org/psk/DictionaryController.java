@@ -31,6 +31,7 @@ public class DictionaryController {
 //        TODO Przenieść to do modelu
         ObservableList<String> items = FXCollections.observableArrayList();
         String searchText = searchTextField.getText();
+        model.printSucessors(searchText);
         if (searchText.equals("")) return;
         System.out.println(searchText);
         Queue<String> result = this.model.findTranslationQueue(searchText);
@@ -42,7 +43,6 @@ public class DictionaryController {
             items.add(s);
         }
         secondLanguageListView.setItems(items);
-        System.out.println(secondLanguageListView.getItems());
 
     }
 
