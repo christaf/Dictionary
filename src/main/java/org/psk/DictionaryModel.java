@@ -57,6 +57,6 @@ public class DictionaryModel {
 
     public void printSucessors(String word){
         if(word != null && !word.equals(""))
-            dictionary.printSucessors(word);
+            dictionary.printSuccessors(word);
     }
 }

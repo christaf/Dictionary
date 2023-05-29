@@ -1,7 +1,5 @@
 package org.psk;
 
-import com.sun.source.tree.Tree;
-
 import java.util.*;
 
 public class Dictionary {
@@ -23,7 +21,6 @@ public class Dictionary {
     }
 
     public void addWord(String word) {
-//        TODO Add parent references ...
         Node currentNode = null;
         for (Node child : root) {
             if (child.value == word.charAt(0)) {
@@ -78,7 +75,7 @@ public class Dictionary {
         }
     }
 
-    public void printSucessors(String word) {
+    public void printSuccessors(String word) {
         Node end = findEnd(word);
         StringBuilder stringBuilder = new StringBuilder();
         if (end == null) {
@@ -98,13 +95,15 @@ public class Dictionary {
     }
 
     public Queue<String> findTranslationsQueueByWord(String word) {
-        if (isWord(word)) System.out.println("is a word");
-        if (isPartOfWord(word)) {
-            System.out.println("is a part of word");
-        }
+        Node endOfTheWord = findEnd(word);
+        if (endOfTheWord == null) return null;
 
-        Queue<String> result = search(word);
+        boolean isEndOfTHeWord = endOfTheWord.isEndOfWord;
+        if(!isEndOfTHeWord) return null;
+
+        Queue<String> result = endOfTheWord.translations;
         if (result != null) {
+            if(result.isEmpty()) return null;
             for (String s : result) {
                 System.out.println(s);
             }
@@ -139,29 +138,6 @@ public class Dictionary {
             return currentNode;
         }
         return null;
-    }
-
-    public Queue<String> search(String word) {
-        int counter = 0;
-        Node endOfTheWord = findEnd(word);
-        if (endOfTheWord == null) return null;
-        Queue<String> result = new LinkedList<>(endOfTheWord.translations);
-//        TODO zeby pokazywalo wszystkie ktore sie zaczynaja od tego sformulowania
-//        counter += 1;
-//        Node tmp = endOfTheWord;
-//        Node prev = endOfTheWord;
-//        while (tmp != null) {
-//            if (counter > 10) break;
-//            for (Node child : endOfTheWord.children) {
-//                if (child.isEndOfWord) {
-//                    result.addAll(child.translations);
-//                    counter += 1;
-//                }
-//                tmp = child;
-//            }
-//            tmp = prev;
-//        }
-        return result;
     }
 
     public boolean isWord(String word) {

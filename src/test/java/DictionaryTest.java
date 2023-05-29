@@ -27,7 +27,7 @@ public class DictionaryTest {
         dictionary.insert(word, translation);
 
         // Search for the word and verify the translation
-        Queue<String> translations = dictionary.search(word);
+        Queue<String> translations = dictionary.findTranslationsQueueByWord(word);
         assertNotNull(translations);
         assertEquals(1, translations.size());
         assertEquals(translation, translations.poll());
@@ -45,7 +45,7 @@ public class DictionaryTest {
         dictionary.insert(word, translation2);
 
         // Search for the word and verify the translations
-        Queue<String> translations = dictionary.search(word);
+        Queue<String> translations = dictionary.findTranslationsQueueByWord(word);
         assertNotNull(translations);
         assertEquals(2, translations.size());
         assertEquals(translation1, translations.poll());
@@ -57,10 +57,10 @@ public class DictionaryTest {
         Dictionary dictionary = new Dictionary();
 
         // Search for a non-existent word
-        Queue<String> translations = dictionary.search("goodbye");
+        Queue<String> translations = dictionary.findTranslationsQueueByWord("goodbye");
         assertNull(translations);
         dictionary.insert("kot", "cat");
-        translations = dictionary.search("goodbye");
+        translations = dictionary.findTranslationsQueueByWord("goodbye");
         assertNull(translations);
     }
 
@@ -88,7 +88,7 @@ public class DictionaryTest {
     public void testInsertSpecialChars() {
         Dictionary dict = new Dictionary();
         dict.insert("cliché", "stereotype");
-        Queue<String> translations = dict.search("cliché");
+        Queue<String> translations = dict.findTranslationsQueueByWord("cliché");
         assertNotNull(translations);
         assertEquals(1, translations.size());
         assertEquals("stereotype", translations.peek());
