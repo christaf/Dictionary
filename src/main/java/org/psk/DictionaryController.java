@@ -27,24 +27,42 @@ public class DictionaryController {
     }
 
     @FXML
-    public void updateSearchListView() {
-//        TODO Przenieść to do modelu
-        ObservableList<String> items = FXCollections.observableArrayList();
+    public void onHintItemPressed(){
+
+    }
+
+    @FXML
+    public void updateOnSearchInsertion() {
         String searchText = searchTextField.getText();
-//        model.printSuccessors(searchText);
+        updateSearchListView(searchText);
+        updateHintListView(searchText);
+    }
+
+    @FXML
+    public void updateSearchListView(String searchText) {
+//        TODO Przenieść to do modelu ?
+
         if (searchText.equals("")) return;
-        System.out.println(searchText);
-        model.printOtherPhrases(searchText);
-        Queue<String> result = this.model.findTranslationQueue(searchText);
-        if (result == null) {
-            return;
-        }
-        for (String s : result) {
-            System.out.println(s);
-            items.add(s);
-        }
+//        TODO do sth with those edge cases
+        secondLanguageListView.refresh();
+        Queue<String> result = model.findTranslationQueue(searchText);
+        ObservableList<String> items = FXCollections.observableArrayList();
+        if (result != null)
+            items.addAll(result);
         secondLanguageListView.setItems(items);
 
+    }
+
+    public void updateHintListView(String searchText) {
+
+        if (searchText.equals("")) return;
+
+        Queue<String> result = model.findOtherPhrases(searchText);
+        if (result == null) return;
+        ObservableList<String> items = FXCollections.observableArrayList();
+        items.addAll(result);
+        firstLanguageListView.setItems(items);
+        model.printOtherPhrases(searchText);
     }
 
     @FXML

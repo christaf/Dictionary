@@ -56,6 +56,10 @@ public class DictionaryModel {
         dictionary.findEndOfWord(word).translations.add(translation);
     }
 
+/***
+ * Function for debugging
+ */
+
     public void printSuccessors(String word) {
         if (word != null && !word.equals(""))
             dictionary.printSuccessors(word);
@@ -63,11 +67,15 @@ public class DictionaryModel {
 
     public void printOtherPhrases(String word) {
         Queue<String> result = new LinkedList<>(dictionary.wordsThatStartsWithPhrase(word));
-        System.out.println("w");
-        if (result != null) return;
+        if(result.isEmpty()) return;
         for (String phrases : result) {
-            System.out.println("hej");
             System.out.println(phrases);
         }
+    }
+    public Queue<String> findOtherPhrases(String word){
+        Queue<String> result = new LinkedList<>(dictionary.wordsThatStartsWithPhrase(word));
+        if(result.isEmpty()) return null;
+        return result;
+
     }
 }

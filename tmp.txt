@@ -1,6 +1,7 @@
 uno,jeden
 apple,jabłko
-naranja,orange
-unoo,jednoO
-unabra,kadabra
-unbelievable,niemozliwe
+orange,pomarańcza
+unbelievable,niemożliwe
+apple juice,sok jabłkowy
+bird,ptak
+ant,mrówka

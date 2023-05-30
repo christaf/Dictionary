@@ -155,7 +155,7 @@ public class DictionaryTest {
 
         // Test parent assignment for 'h' in "hey"
         Node heyNode = getNodeByValue(dictionary, 'h');
-        assertEquals(null, heyNode.parent);
+        assertNull(heyNode.parent);
 
         // Test parent assignment for 'y' in "hey"
         Node yNode = dictionary.findEndOfWord("hey");

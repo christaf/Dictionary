@@ -168,7 +168,6 @@ public class Dictionary {
         stringBuilder.append(currentNode.value);
         if (currentNode.isEndOfWord) {
             String phrase = stringBuilder.toString();
-            System.out.println(phrase);
             resultWordList.add(phrase);
         }
         if (currentNode.children.size() != 0) {
@@ -176,24 +175,21 @@ public class Dictionary {
                 exploreNode(stringBuilder, child, resultWordList);
             }
         }
-
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-
-//        TODO support function for searching for phrases
     }
 
     public Queue<String> wordsThatStartsWithPhrase(String word) {
         Node wordEndNode = findEndOfPhrase(word);
         Queue<String> otherPhrases = new LinkedList<>();
+
         if (wordEndNode == null)
             return otherPhrases;
+
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(word);
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
         exploreNode(stringBuilder, wordEndNode, otherPhrases);
-        for (String s : otherPhrases) {
-            System.out.println(s);
-        }
 
         return otherPhrases;
     }
