@@ -155,7 +155,7 @@ public class Dictionary {
     }
 
     public boolean isPartOfWord(String word) {
-        Node end = findEndOfWord(word);
+        Node end = findEndOfPhrase(word);
         if (end == null)
             return false;
         HashSet<Node> children = end.children;
@@ -192,6 +192,47 @@ public class Dictionary {
         exploreNode(stringBuilder, wordEndNode, otherPhrases);
 
         return otherPhrases;
+    }
+
+    public void removeTranslation(String word, String translation) {
+        Node end = findEndOfWord(word);
+        if (end != null) {
+            end.translations.remove(translation);
+        }
+    }
+
+    public void removeWord(String word) {
+        Node end = findEndOfWord(word);
+        if (end != null && end.isEndOfWord) {
+            end.isEndOfWord = false;
+            end.translations = null;
+            removeNodeIfOrphan(end);
+        }
+    }
+
+    public void replaceWord(String word, String newWord) {
+        Node end = findEndOfWord(word);
+        if (end != null && end.isEndOfWord) {
+//            end.isEndOfWord = false;
+//            Node newNode = findEndOfWord(newWord);
+//            if (newNode == null) {
+
+//            }
+//            newNode.isEndOfWord = true;
+//            newNode.translations = end.translations;
+//            end.translations = null;
+//            removeNodeIfOrphan(end);
+        }
+    }
+
+    private void removeNodeIfOrphan(Node node) {
+        if (node == null || node.parent == null) {
+            return;
+        }
+        if (!node.isEndOfWord && node.children.isEmpty()) {
+            node.parent.children.remove(node);
+            removeNodeIfOrphan(node.parent);
+        }
     }
 }
 

@@ -62,7 +62,8 @@ public class DictionaryController {
         ObservableList<String> items = FXCollections.observableArrayList();
         items.addAll(result);
         firstLanguageListView.setItems(items);
-        model.printOtherPhrases(searchText);
+//        model.printOtherPhrases(searchText);
+        firstLanguageListView.refresh();
     }
 
     @FXML

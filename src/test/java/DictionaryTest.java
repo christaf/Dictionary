@@ -189,6 +189,40 @@ public class DictionaryTest {
         assertEquals(expectedPhrases, result);
     }
 
+
+    @Test
+    public void testRemoveWord() {
+        // Create an instance of the class containing the method to be tested
+        Dictionary dictionary = new Dictionary();
+        dictionary.addWord("apple");
+        dictionary.addTranslation("apple", "jablko");
+
+        dictionary.addWord("apples");
+        dictionary.addTranslation("apples", "jablka");
+
+        dictionary.addWord("applejuice");
+        dictionary.addTranslation("applejuice", "jablkowysok");
+
+        dictionary.removeWord("apple");
+        assertFalse(dictionary.isWord("apple"));
+        assertTrue(dictionary.isWord("apples"));
+        assertTrue(dictionary.isWord("applejuice"));
+        assertTrue(dictionary.isPartOfWord("apple"));
+    }
+
+    @Test
+    public void testRemoveTranslation() {
+        Dictionary dictionary = new Dictionary();
+        dictionary.addWord("apple");
+        dictionary.addTranslation("apple", "jabłko");
+//        dictionary.addTranslation("apple", "owoc");
+        Queue<String> translationsBeforeRemoval = dictionary.findTranslationsQueueByWord("apple");
+        dictionary.removeTranslation("apple", "jabłko");
+        Queue<String> translationsAfterRemoval = dictionary.findTranslationsQueueByWord("apple");
+        assertNotNull(translationsBeforeRemoval);
+        assertNull(translationsAfterRemoval);
+    }
+
     private Node getNodeByValue(Dictionary dictionary, char value) {
         for (Node node : dictionary.root) {
             if (node.value == value) {
