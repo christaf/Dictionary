@@ -223,6 +223,13 @@ public class DictionaryTest {
         assertNull(translationsAfterRemoval);
     }
 
+    @Test
+    public void testReplaceWord() {
+
+
+
+    }
+
     private Node getNodeByValue(Dictionary dictionary, char value) {
         for (Node node : dictionary.root) {
             if (node.value == value) {

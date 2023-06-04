@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseEvent;
 
 import java.util.Queue;
 
@@ -14,42 +15,37 @@ public class DictionaryController {
     private DictionaryModel model;
 
     @FXML
-    private ListView<String> firstLanguageListView;
+    private ListView<String> hintListView;
 
     @FXML
-    private ListView<String> secondLanguageListView;
+    private ListView<String> translationsListView;
 
     @FXML
     private TextField searchTextField;
 
     public void initialize() {
         model = new DictionaryModel("tmp.txt");
+        hintListView.setOnMouseClicked(this::handleHintListViewClick);
     }
 
-    @FXML
-    public void onHintItemPressed(){
-
-    }
 
     @FXML
     public void updateOnSearchInsertion() {
         String searchText = searchTextField.getText();
-        updateSearchListView(searchText);
         updateHintListView(searchText);
+        updateTranslationsListView(searchText);
     }
 
     @FXML
-    public void updateSearchListView(String searchText) {
-//        TODO Przenieść to do modelu ?
+    public void updateTranslationsListView(String searchText) {
 
+        translationsListView.refresh();
         if (searchText.equals("")) return;
-//        TODO do sth with those edge cases
-        secondLanguageListView.refresh();
-        Queue<String> result = model.findTranslationQueue(searchText);
+
+        Queue<String> translationQueue = model.findTranslationQueue(searchText);
         ObservableList<String> items = FXCollections.observableArrayList();
-        if (result != null)
-            items.addAll(result);
-        secondLanguageListView.setItems(items);
+        if (translationQueue != null) items.addAll(translationQueue);
+        translationsListView.setItems(items);
 
     }
 
@@ -57,13 +53,20 @@ public class DictionaryController {
 
         if (searchText.equals("")) return;
 
-        Queue<String> result = model.findOtherPhrases(searchText);
-        if (result == null) return;
+        Queue<String> otherPhrases = model.findOtherPhrases(searchText);
         ObservableList<String> items = FXCollections.observableArrayList();
-        items.addAll(result);
-        firstLanguageListView.setItems(items);
-//        model.printOtherPhrases(searchText);
-        firstLanguageListView.refresh();
+        if (otherPhrases != null) items.addAll(otherPhrases);
+        hintListView.setItems(items);
+        hintListView.refresh();
+    }
+
+    private void handleHintListViewClick(MouseEvent event) {
+        if (event.getClickCount() == 1) {
+            String clickedHintWord = hintListView.getSelectionModel().getSelectedItem();
+            searchTextField.setText(clickedHintWord);
+            updateHintListView(clickedHintWord);
+            updateTranslationsListView(clickedHintWord);
+        }
     }
 
     @FXML

@@ -76,6 +76,8 @@ public class DictionaryModel {
         Queue<String> result = new LinkedList<>(dictionary.wordsThatStartsWithPhrase(word));
         if(result.isEmpty()) return null;
         return result;
-
     }
+
+
+
 }

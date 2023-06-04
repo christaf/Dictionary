@@ -13,7 +13,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="firstLanguageListView" layoutY="-1.0" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="hintListView" layoutY="-1.0" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </AnchorPane>
               </content>
@@ -22,7 +22,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="secondLanguageListView" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="translationsListView" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </AnchorPane>
               </content>
