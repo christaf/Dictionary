@@ -10,7 +10,8 @@ import java.util.Queue;
 
 public class DictionaryModel {
 
-    private final Dictionary dictionary = new Dictionary();
+    private final Dictionary dictionaryEnglishPolish = new Dictionary();
+//    private final Dictionary dictionaryPolishEnglish = new Dictionary();
     private final List<String> firstLanguageWords;
     private final List<String> secondLanguageWords;
 
@@ -19,8 +20,11 @@ public class DictionaryModel {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    dictionary.insert(parts[0].trim(), parts[1].trim());
+                if (parts.length >= 2) {
+                    for (int i = 1; i < parts.length; i++) {
+                        dictionaryEnglishPolish.insert(parts[0].trim(), parts[i].trim());
+//                        dictionaryPolishEnglish.insert(parts[i].trim(), parts[0].trim());
+                    }
                 }
             }
         } catch (IOException e) {
@@ -28,12 +32,12 @@ public class DictionaryModel {
         }
         firstLanguageWords = new ArrayList<>();
         secondLanguageWords = new ArrayList<>();
-        dictionary.printAllWords();
+//        dictionary.printAllWords();
     }
 
     public void addWord(String firstLanguageWord, String secondLanguageWord) {
-        firstLanguageWords.add(firstLanguageWord);
-        secondLanguageWords.add(secondLanguageWord);
+        dictionaryEnglishPolish.addWord(firstLanguageWord);
+        dictionaryEnglishPolish.addTranslation(firstLanguageWord, secondLanguageWord);
     }
 
     public void editWord(String oldWord, String newWord) {
@@ -49,35 +53,35 @@ public class DictionaryModel {
     }
 
     public Queue<String> findTranslationQueue(String word) {
-        return dictionary.findTranslationsQueueByWord(word);
+        return dictionaryEnglishPolish.findTranslationsQueueByWord(word);
     }
 
     public void insertTranslation(String word, String translation) {
-        dictionary.findEndOfWord(word).translations.add(translation);
+        dictionaryEnglishPolish.findEndOfWord(word).translations.add(translation);
     }
 
-/***
- * Function for debugging
- */
+    /***
+     * Function for debugging
+     */
 
     public void printSuccessors(String word) {
         if (word != null && !word.equals(""))
-            dictionary.printSuccessors(word);
+            dictionaryEnglishPolish.printSuccessors(word);
     }
 
     public void printOtherPhrases(String word) {
-        Queue<String> result = new LinkedList<>(dictionary.wordsThatStartsWithPhrase(word));
-        if(result.isEmpty()) return;
+        Queue<String> result = new LinkedList<>(dictionaryEnglishPolish.wordsThatStartsWithPhrase(word));
+        if (result.isEmpty()) return;
         for (String phrases : result) {
             System.out.println(phrases);
         }
     }
-    public Queue<String> findOtherPhrases(String word){
-        Queue<String> result = new LinkedList<>(dictionary.wordsThatStartsWithPhrase(word));
-        if(result.isEmpty()) return null;
+
+    public Queue<String> findOtherPhrases(String word) {
+        Queue<String> result = new LinkedList<>(dictionaryEnglishPolish.wordsThatStartsWithPhrase(word));
+        if (result.isEmpty()) return null;
         return result;
     }
-
 
 
 }

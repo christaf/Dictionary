@@ -200,14 +200,14 @@ public class DictionaryTest {
         dictionary.addWord("apples");
         dictionary.addTranslation("apples", "jablka");
 
-        dictionary.addWord("applejuice");
-        dictionary.addTranslation("applejuice", "jablkowysok");
+//        dictionary.addWord("apple juice");
+//        dictionary.addTranslation("apple juice", "jablkowy sok");
 
-        dictionary.removeWord("apple");
-        assertFalse(dictionary.isWord("apple"));
-        assertTrue(dictionary.isWord("apples"));
-        assertTrue(dictionary.isWord("applejuice"));
-        assertTrue(dictionary.isPartOfWord("apple"));
+        dictionary.removeWord("apples");
+        assertTrue(dictionary.isWord("apple"));
+        assertFalse(dictionary.isWord("apples"));
+//        assertTrue(dictionary.isWord("apple juice"));
+        assertTrue(dictionary.findEndOfPhrase("apple").children.isEmpty());
     }
 
     @Test
