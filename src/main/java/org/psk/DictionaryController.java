@@ -1,21 +1,15 @@
 package org.psk;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 
-import java.util.EventListener;
 import java.util.Queue;
 
 public class DictionaryController {
@@ -35,6 +29,7 @@ public class DictionaryController {
 
     public void initialize() {
         model = new DictionaryModel("tmp.txt");
+        model.setCurrentDictionary();
         hintListView.setEditable(true);
         hintListView.setOnMouseClicked(this::handleHintListViewClick);
         hintListView.setCellFactory(TextFieldListCell.forListView());
@@ -46,6 +41,20 @@ public class DictionaryController {
                 System.out.println("setOnEditCommit");
             }
         });
+
+        switchLanguageButton.setOnMouseClicked(
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        if(switchLanguageButton.getText().equals("Polish->English")){
+                            switchLanguageButton.setText("English->Polish");
+                        }else{
+                            switchLanguageButton.setText("Polish->English");
+                            switchLanguageButton.setText("Polish->English");
+                        }
+                    }
+                }
+        );
 
     }
 
@@ -84,7 +93,7 @@ public class DictionaryController {
     private void handleHintListViewClick(MouseEvent event) {
         if (event.getClickCount() == 1) { // Check for single click
             String clickedHintWord = hintListView.getSelectionModel().getSelectedItem();
-            if(clickedHintWord == null) return;
+            if (clickedHintWord == null) return;
             // Calculate the time difference since the previous click
             long currentClickTime = System.currentTimeMillis();
             long clickTimeDifference = currentClickTime - previousClickTime;
@@ -109,6 +118,10 @@ public class DictionaryController {
     @FXML
     public void switchLanguage() {
         // TODO: Implement switching of languages
+        model.setCurrentDictionary();
+        hintListView.refresh();
+        translationsListView.refresh();
+
 
     }
 }
