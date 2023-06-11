@@ -29,16 +29,18 @@ public class DictionaryController {
 
     public void initialize() {
         model = new DictionaryModel("tmp.txt");
-        model.setCurrentDictionary();
         hintListView.setEditable(true);
         hintListView.setOnMouseClicked(this::handleHintListViewClick);
         hintListView.setCellFactory(TextFieldListCell.forListView());
 
         hintListView.setOnEditCommit(new EventHandler<ListView.EditEvent<String>>() {
             @Override
-            public void handle(ListView.EditEvent<String> t) {
-                hintListView.getItems().set(t.getIndex(), t.getNewValue());
-                System.out.println("setOnEditCommit");
+            public void handle(ListView.EditEvent<String> stringEditEvent) {
+                int indexOfEditedWord = hintListView.getEditingIndex();
+                String oldWord = hintListView.getItems().get(indexOfEditedWord);
+                String newWord = stringEditEvent.getNewValue();
+                model.editWord(oldWord, newWord);
+                hintListView.getItems().set(stringEditEvent.getIndex(), stringEditEvent.getNewValue());
             }
         });
 
@@ -46,9 +48,9 @@ public class DictionaryController {
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        if(switchLanguageButton.getText().equals("Polish->English")){
+                        if (switchLanguageButton.getText().equals("Polish->English")) {
                             switchLanguageButton.setText("English->Polish");
-                        }else{
+                        } else {
                             switchLanguageButton.setText("Polish->English");
                             switchLanguageButton.setText("Polish->English");
                         }

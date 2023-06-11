@@ -47,6 +47,7 @@ public class DictionaryModel {
         secondLanguageWords = new ArrayList<>();
 //        dictionaryPolishEnglish.printAllWords();
 //        dictionary.printAllWords();
+        setCurrentDictionary();
     }
 
     public void addWord(String firstLanguageWord, String secondLanguageWord) {
@@ -55,7 +56,7 @@ public class DictionaryModel {
     }
 
     public void editWord(String oldWord, String newWord) {
-
+        currentDictionary.replaceWord(oldWord, newWord);
     }
 
     public List<String> getFirstLanguageWords() {

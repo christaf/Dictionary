@@ -210,23 +210,16 @@ public class Dictionary {
         }
     }
 
-    public void replaceWord(String word, String newWord) {
-        Node end = findEndOfWord(word);
-        if (end == null) return;
-        if (end.isEndOfWord) {
-            Queue<String> translationQueue = end.translations;
+    public void replaceWord(String oldWord, String newWord) {
+        Node endOfOldWord = findEndOfWord(oldWord);
+        if (endOfOldWord == null) return;
+        if (endOfOldWord.isEndOfWord) {
+            Queue<String> translationQueue = endOfOldWord.translations;
             addWord(newWord);
-            for(String translation : translationQueue)
+            for (String translation : translationQueue)
                 addTranslation(newWord, translation);
-
-//            TODO usunac juz zmieniony wyraz nie wiem czy dziala xD
-            while((end.parent.children.size() == 1)){
-//                end.parent.children.remove(end.parent.children)
-                end = end.parent;
-                end.children = null;
-            }
-
-            removeNodeIfOrphan(end);
+            removeWord(oldWord);
+            removeNodeIfOrphan(endOfOldWord);
         }
     }
 
