@@ -56,6 +56,14 @@ public class DictionaryModel {
     }
 
     public void editWord(String oldWord, String newWord) {
+        Queue<String> toUpdate = currentDictionary.findEndOfWord(oldWord).translations;
+        System.out.println(toUpdate);
+        setCurrentDictionary();
+        for(String translation : toUpdate){
+            currentDictionary.addTranslation(translation, newWord);
+            currentDictionary.removeTranslation(translation, oldWord);
+        }
+        setCurrentDictionary();
         currentDictionary.replaceWord(oldWord, newWord);
     }
 

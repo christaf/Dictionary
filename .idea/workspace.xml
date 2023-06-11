@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="Added new functions to Dictionary class and their tests">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="bce4bafc-a7d2-4135-bb7e-dcbf34422fda" name="Changes" comment="Editing functionality added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/Dictionary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psk/DictionaryModel.java" afterDir="false" />
     </list>
@@ -168,7 +166,7 @@
       <workItem from="1679998104975" duration="369000" />
       <workItem from="1682373583866" duration="486000" />
       <workItem from="1683540679429" duration="2974000" />
-      <workItem from="1686475576283" duration="2197000" />
+      <workItem from="1686475576283" duration="3811000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1678584230613</created>
@@ -282,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684835270721</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Editing functionality added">
+      <created>1686477925305</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1686477925305</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,6 +333,7 @@
     <MESSAGE value="Updated translations' ListView" />
     <MESSAGE value="Small changes" />
     <MESSAGE value="Added field Parent to Node" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added field Parent to Node" />
+    <MESSAGE value="Editing functionality added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Editing functionality added" />
   </component>
 </project>

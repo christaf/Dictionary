@@ -97,18 +97,18 @@ public class DictionaryController {
             String clickedHintWord = hintListView.getSelectionModel().getSelectedItem();
             if (clickedHintWord == null) return;
             // Calculate the time difference since the previous click
-            long currentClickTime = System.currentTimeMillis();
-            long clickTimeDifference = currentClickTime - previousClickTime;
-
-            if (clickedHintWord.equals(previousClickedHintWord) && clickTimeDifference <= 1000) {
-                // Same item clicked twice within a 1-second gap
-//                model.editWord(clickedHintWord, "A");
-                System.out.println("editing");
-            }
-
-            // Update the previous click information
-            previousClickTime = currentClickTime;
-            previousClickedHintWord = clickedHintWord;
+//            long currentClickTime = System.currentTimeMillis();
+//            long clickTimeDifference = currentClickTime - previousClickTime;
+//
+////            if (clickedHintWord.equals(previousClickedHintWord) && clickTimeDifference <= 1000) {
+////                // Same item clicked twice within a 1-second gap
+//////                model.editWord(clickedHintWord, "A");
+////                System.out.println("editing");
+////            }
+//
+//            // Update the previous click information
+//            previousClickTime = currentClickTime;
+//            previousClickedHintWord = clickedHintWord;
 
             searchTextField.setText(clickedHintWord);
             updateHintListView(clickedHintWord);
