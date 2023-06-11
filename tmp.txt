@@ -1,7 +1,7 @@
-uno,jeden
 apple,jabłko
+apple juice,sok jabłkowy
+ant,mrówka
+bird,ptak
 orange,pomarańcza,pomarańczowy
 unbelievable,niemożliwe,nieprawdopodobne
-apple juice,sok jabłkowy
-bird,ptak
-ant,mrówka
+uno,jeden

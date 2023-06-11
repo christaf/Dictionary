@@ -100,14 +100,7 @@ public class Dictionary {
         boolean isEndOfTHeWord = endOfTheWord.isEndOfWord;
         if (!isEndOfTHeWord) return null;
 
-        Queue<String> result = endOfTheWord.translations;
-        if (result != null) {
-            if (result.isEmpty()) return null;
-            for (String s : result) {
-                System.out.println(s);
-            }
-        }
-        return result;
+        return endOfTheWord.translations;
     }
 
     public Node findEndOfWord(String word) {

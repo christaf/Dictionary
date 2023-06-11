@@ -39,6 +39,7 @@ public class DictionaryController {
                 String newWord = stringEditEvent.getNewValue();
                 model.editWord(oldWord, newWord);
                 hintListView.getItems().set(stringEditEvent.getIndex(), stringEditEvent.getNewValue());
+                model.saveDictionary("tmp.txt");
             }
         });
 
