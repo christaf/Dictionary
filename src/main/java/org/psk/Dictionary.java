@@ -5,7 +5,6 @@ import java.util.*;
 public class Dictionary {
 
     private static class nodeComparator implements Comparator<Node> {
-        //TODO poprawic zeby dzialal poprawnie xD
         @Override
         public int compare(Node o1, Node o2) {
             return o1.value - o2.value;

@@ -83,10 +83,6 @@ public class DictionaryModel {
         currentDictionary.findEndOfWord(word).translations.add(translation);
     }
 
-    /***
-     * Function for debugging
-     */
-
     public void printSuccessors(String word) {
         if (word != null && !word.equals(""))
             currentDictionary.printSuccessors(word);
