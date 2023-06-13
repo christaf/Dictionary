@@ -173,8 +173,8 @@ public class DictionaryTest {
         dictionary.addWord("apples");
         dictionary.addTranslation("apples", "jablka");
 
-        dictionary.addWord("applejuice");
-        dictionary.addTranslation("applejuice", "jablkowysok");
+        dictionary.addWord("apple juice");
+        dictionary.addTranslation("apple juice", "jablkowy sok");
 
         // Call the method and get the result
         Queue<String> result = dictionary.wordsThatStartsWithPhrase("apple");
@@ -182,8 +182,8 @@ public class DictionaryTest {
         // Create a sample queue of expected phrases
         Queue<String> expectedPhrases = new LinkedList<>();
         expectedPhrases.add("apple");
+        expectedPhrases.add("apple juice");
         expectedPhrases.add("apples");
-        expectedPhrases.add("applejuice");
 
         // Assert that the result matches the expected queue
         assertEquals(expectedPhrases, result);
@@ -220,7 +220,7 @@ public class DictionaryTest {
         dictionary.removeTranslation("apple", "jabłko");
         Queue<String> translationsAfterRemoval = dictionary.findTranslationsQueueByWord("apple");
         assertNotNull(translationsBeforeRemoval);
-        assertNull(translationsAfterRemoval);
+        assertEquals(0, translationsAfterRemoval.size());
     }
 
     @Test
