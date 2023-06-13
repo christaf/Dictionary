@@ -2,7 +2,6 @@ package org.psk;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -122,7 +121,7 @@ public class DictionaryController {
     }
 
     public void openEditingGUI() {
-        AddWordWindow addWordWindow = new AddWordWindow();
+        AddWordWindow addWordWindow = new AddWordWindow(model);
         addWordWindow.show();
     }
 }

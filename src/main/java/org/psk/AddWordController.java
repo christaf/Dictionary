@@ -2,13 +2,17 @@ package org.psk;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+public class AddWordController{
 
-public class AddWordController implements Initializable {
+    private DictionaryModel dictionaryModel;
+    public void setDictionaryModel(DictionaryModel dictionaryModel) {
+        this.dictionaryModel = dictionaryModel;
+    }
+    @FXML
+    private TextField currentDictionaryTextField;
     @FXML
     private Button addTranslationButton;
 
@@ -27,21 +31,20 @@ public class AddWordController implements Initializable {
     private void handleAddButtonAction(ActionEvent event) {
 
     }
+
     @FXML
     private void handleAddTranslationButtonAction(ActionEvent event) {
 
     }
+
     @FXML
     private void handleRemoveButtonAction(ActionEvent event) {
 
     }
+
     @FXML
     private void handleRemoveTranslationButtonAction(ActionEvent event) {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 }

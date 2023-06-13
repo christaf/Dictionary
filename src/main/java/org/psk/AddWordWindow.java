@@ -8,11 +8,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AddWordWindow extends Stage {
-    public AddWordWindow() {
+    public AddWordWindow(DictionaryModel dictionaryModel) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/add_remove_view.fxml"));
         try {
             Parent root = fxmlLoader.load();
             AddWordController controller = fxmlLoader.getController();
+            controller.setDictionaryModel(dictionaryModel);
             fxmlLoader.setController(controller);
 
             Scene scene = new Scene(root);
