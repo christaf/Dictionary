@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class AddWordWindow extends Stage {
     public AddWordWindow() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add_remove_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/add_remove_view.fxml"));
         try {
             Parent root = fxmlLoader.load();
             AddWordController controller = fxmlLoader.getController();

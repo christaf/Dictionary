@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
+
 <SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.psk.DictionaryController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
@@ -25,8 +28,8 @@
               </content>
             </ScrollPane>
             <TextField fx:id="searchTextField" layoutX="224.0" layoutY="24.0" onKeyPressed="#updateOnSearchInsertion" promptText="Słowo..." />
-            <ToggleButton fx:id="switchLanguageButton" layoutX="255.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchLanguage" text="English->Polish" />
-            <Button layoutX="253.0" layoutY="358.0" mnemonicParsing="false" text="Edytuj słownik" />
+            <ToggleButton fx:id="switchLanguageButton" layoutX="255.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchLanguage" text="English-&gt;Polish" />
+            <Button fx:id="changeSceneButton" layoutX="253.0" layoutY="358.0" mnemonicParsing="false" onAction="#openEditingGUI" text="Edytuj słownik" />
          </children></AnchorPane>
   </items>
 </SplitPane>
