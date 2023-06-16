@@ -13,7 +13,7 @@ public class AddWordWindow extends Stage {
         try {
             Parent root = fxmlLoader.load();
             AddWordController controller = fxmlLoader.getController();
-            controller.setDictionaryModel(dictionaryModel);
+            controller.setup(dictionaryModel);
             fxmlLoader.setController(controller);
 
             Scene scene = new Scene(root);

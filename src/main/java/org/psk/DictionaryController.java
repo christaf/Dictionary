@@ -17,7 +17,7 @@ public class DictionaryController {
     private AddWordWindow addWordWindow;
     private boolean isEditingGUIOpen = false;
     @FXML
-    public ToggleButton switchLanguageButton;
+    public ToggleButton dictionaryStateButton;
     @FXML
     public Button changeSceneButton;
     private DictionaryModel model;
@@ -49,24 +49,20 @@ public class DictionaryController {
             }
         });
 
-        switchLanguageButton.setText(model.getDictionaryState().getDescription());
-        switchLanguageButton.setOnMouseClicked(
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        if(model.getDictionaryState().equals(DictionaryState.POLISH_ENGLISH)){
-                            switchLanguageButton.setText(DictionaryState.POLISH_ENGLISH.getDescription());
-                        } else {
-                            switchLanguageButton.setText(DictionaryState.ENGLISH_POLISH.getDescription());
-                        }
-                    }
-                }
-        );
-
+        dictionaryStateButton.setText(model.getDictionaryState().getDescription());
+        dictionaryStateButton.setOnMouseClicked(this::updateDictionaryStateButton);
         changeSceneButton.setOnMouseClicked(this::handleEditionButton);
 
     }
 
+    @FXML
+    public void updateDictionaryStateButton(MouseEvent event){
+        if(model.getDictionaryState().equals(DictionaryState.POLISH_ENGLISH)){
+            dictionaryStateButton.setText(DictionaryState.POLISH_ENGLISH.getDescription());
+        } else {
+            dictionaryStateButton.setText(DictionaryState.ENGLISH_POLISH.getDescription());
+        }
+    }
     @FXML
     public void updateOnSearchInsertion() {
         String searchText = searchTextField.getText();

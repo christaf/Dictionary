@@ -28,7 +28,7 @@
               </content>
             </ScrollPane>
             <TextField fx:id="searchTextField" layoutX="224.0" layoutY="24.0" onKeyPressed="#updateOnSearchInsertion" promptText="Słowo..." />
-            <ToggleButton fx:id="switchLanguageButton" layoutX="255.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchLanguage" text="English-&gt;Polish" />
+            <ToggleButton fx:id="dictionaryStateButton" layoutX="255.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchLanguage" text="English-&gt;Polish" />
             <Button fx:id="changeSceneButton" layoutX="253.0" layoutY="358.0" mnemonicParsing="false" onAction="#openEditingGUI" text="Edytuj słownik" />
          </children></AnchorPane>
   </items>

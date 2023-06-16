@@ -14,11 +14,10 @@ public class AddWordController {
     public Button changeDirectoryButton;
     private DictionaryModel dictionaryModel;
 
-    public void setDictionaryModel(DictionaryModel dictionaryModel) {
+    public void setup(DictionaryModel dictionaryModel) {
         this.dictionaryModel = dictionaryModel;
-    }
 
-    public void initialize() {
+        handleCurrentDictionaryTextField(dictionaryModel.getDictionaryState().getDescription());
         addButton.setOnMouseClicked(this::handleAddButtonAction);
         changeDirectoryButton.setOnMouseClicked(this::handleChangeDictionaryButton);
     }
@@ -45,6 +44,7 @@ public class AddWordController {
     @FXML
     private void handleChangeDictionaryButton(MouseEvent event) {
         dictionaryModel.setCurrentDictionary();
+        handleCurrentDictionaryTextField(dictionaryModel.getDictionaryState().getDescription());
     }
 
     @FXML
