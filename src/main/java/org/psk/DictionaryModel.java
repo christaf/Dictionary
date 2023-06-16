@@ -4,7 +4,19 @@ import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
 public class DictionaryModel {
+
+
+    private DictionaryState dictionaryState;
+
+    public void setDictionaryState(DictionaryState dictionaryState) {
+        this.dictionaryState = dictionaryState;
+    }
+
+    public DictionaryState getDictionaryState() {
+        return dictionaryState;
+    }
 
     public Dictionary currentDictionary;
     private final Dictionary dictionaryEnglishPolish = new Dictionary();
@@ -13,8 +25,10 @@ public class DictionaryModel {
     public void setCurrentDictionary() {
         if (currentDictionary == dictionaryEnglishPolish) {
             currentDictionary = dictionaryPolishEnglish;
+            this.dictionaryState = DictionaryState.POLISH_ENGLISH;
         } else {
             currentDictionary = dictionaryEnglishPolish;
+            this.dictionaryState = DictionaryState.ENGLISH_POLISH;
         }
     }
 
@@ -27,7 +41,7 @@ public class DictionaryModel {
         setCurrentDictionary();
     }
 
-    public void readDictionary(String filename){
+    public void readDictionary(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -45,9 +59,10 @@ public class DictionaryModel {
             throw new RuntimeException(e);
         }
     }
+
     public void saveDictionary(String filename) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-            for(Node child : dictionaryEnglishPolish.root){
+            for (Node child : dictionaryEnglishPolish.root) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(child.value);
                 saveDictionaryHelper(child, sb, writer);
@@ -101,6 +116,7 @@ public class DictionaryModel {
             sb.deleteCharAt(sb.length() - 1);
         }
     }
+
     public void addWord(String firstLanguageWord, String secondLanguageWord) {
         currentDictionary.addWord(firstLanguageWord);
         currentDictionary.addTranslation(firstLanguageWord, secondLanguageWord);
@@ -109,7 +125,7 @@ public class DictionaryModel {
     public void editWord(String oldWord, String newWord) {
         Queue<String> toUpdate = currentDictionary.findEndOfWord(oldWord).translations;
         setCurrentDictionary();
-        for(String translation : toUpdate){
+        for (String translation : toUpdate) {
             currentDictionary.addTranslation(translation, newWord);
             currentDictionary.removeTranslation(translation, oldWord);
         }

@@ -49,14 +49,15 @@ public class DictionaryController {
             }
         });
 
+        switchLanguageButton.setText(model.getDictionaryState().getDescription());
         switchLanguageButton.setOnMouseClicked(
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        if (switchLanguageButton.getText().equals("Polish->English")) {
-                            switchLanguageButton.setText("English->Polish");
+                        if(model.getDictionaryState().equals(DictionaryState.POLISH_ENGLISH)){
+                            switchLanguageButton.setText(DictionaryState.POLISH_ENGLISH.getDescription());
                         } else {
-                            switchLanguageButton.setText("Polish->English");
+                            switchLanguageButton.setText(DictionaryState.ENGLISH_POLISH.getDescription());
                         }
                     }
                 }
@@ -107,7 +108,7 @@ public class DictionaryController {
     }
 
     private void handleEditionButton(MouseEvent event) {
-        if (event.getClickCount() == 2) {
+        if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
             if (addWordWindow == null) {
                 openEditingGUI();
             }

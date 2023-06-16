@@ -3,7 +3,6 @@ package org.psk;
 import java.util.*;
 
 public class Dictionary {
-
     private static class nodeComparator implements Comparator<Node> {
         @Override
         public int compare(Node o1, Node o2) {

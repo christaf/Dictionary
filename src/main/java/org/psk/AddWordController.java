@@ -6,14 +6,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class AddWordController{
+public class AddWordController {
 
+    public TextField addWordTextField;
+    public TextField addWordsTranslationTextField;
+    public TextField removeWordTextField;
+    public Button changeDirectoryButton;
     private DictionaryModel dictionaryModel;
+
     public void setDictionaryModel(DictionaryModel dictionaryModel) {
         this.dictionaryModel = dictionaryModel;
     }
-    public void initialize(){
+
+    public void initialize() {
         addButton.setOnMouseClicked(this::handleAddButtonAction);
+        changeDirectoryButton.setOnMouseClicked(this::handleChangeDictionaryButton);
     }
 
     @FXML
@@ -30,11 +37,19 @@ public class AddWordController{
     @FXML
     private Button removeButton;
 
-    // ...
-
     @FXML
     private void handleAddButtonAction(MouseEvent event) {
         dictionaryModel.currentDictionary.printAllWords();
+    }
+
+    @FXML
+    private void handleChangeDictionaryButton(MouseEvent event) {
+        dictionaryModel.setCurrentDictionary();
+    }
+
+    @FXML
+    private void handleCurrentDictionaryTextField(String currentDictionaryName) {
+        currentDictionaryTextField.setText(currentDictionaryName);
     }
 
     @FXML
