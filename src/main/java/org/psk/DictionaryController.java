@@ -14,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import java.util.Queue;
 
 public class DictionaryController {
+    private AddWordWindow addWordWindow;
+    private boolean isEditingGUIOpen = false;
     @FXML
     public ToggleButton switchLanguageButton;
     @FXML
@@ -55,20 +57,12 @@ public class DictionaryController {
                             switchLanguageButton.setText("English->Polish");
                         } else {
                             switchLanguageButton.setText("Polish->English");
-                            switchLanguageButton.setText("Polish->English");
                         }
                     }
                 }
         );
 
-        changeSceneButton.setOnMouseClicked(
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        openEditingGUI();
-                    }
-                }
-        );
+        changeSceneButton.setOnMouseClicked(this::handleEditionButton);
 
     }
 
@@ -112,6 +106,13 @@ public class DictionaryController {
         }
     }
 
+    private void handleEditionButton(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            if (addWordWindow == null) {
+                openEditingGUI();
+            }
+        }
+    }
 
     @FXML
     public void switchLanguage() {
@@ -121,7 +122,13 @@ public class DictionaryController {
     }
 
     public void openEditingGUI() {
-        AddWordWindow addWordWindow = new AddWordWindow(model);
-        addWordWindow.show();
+        if (addWordWindow == null) {
+            addWordWindow = new AddWordWindow(model);
+            addWordWindow.show();
+            addWordWindow.setOnCloseRequest(event -> {
+                isEditingGUIOpen = false;
+                addWordWindow = null;
+            });
+        }
     }
 }
