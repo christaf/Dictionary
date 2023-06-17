@@ -36,18 +36,7 @@ public class DictionaryController {
         hintListView.setEditable(true);
         hintListView.setOnMouseClicked(this::handleHintListViewClick);
         hintListView.setCellFactory(TextFieldListCell.forListView());
-
-        hintListView.setOnEditCommit(new EventHandler<ListView.EditEvent<String>>() {
-            @Override
-            public void handle(ListView.EditEvent<String> stringEditEvent) {
-                int indexOfEditedWord = hintListView.getEditingIndex();
-                String oldWord = hintListView.getItems().get(indexOfEditedWord);
-                String newWord = stringEditEvent.getNewValue();
-                model.editWord(oldWord, newWord);
-                hintListView.getItems().set(stringEditEvent.getIndex(), stringEditEvent.getNewValue());
-                model.saveDictionary("tmp.txt");
-            }
-        });
+        hintListView.setOnEditCommit(this::handleOnEditCommit);
 
         dictionaryStateButton.setText(model.getDictionaryState().getDescription());
         dictionaryStateButton.setOnMouseClicked(this::updateDictionaryStateButton);
@@ -55,13 +44,26 @@ public class DictionaryController {
 
     }
 
-    @FXML
-    public void updateDictionaryStateButton(MouseEvent event){
+    private void handleOnEditCommit(ListView.EditEvent<String> stringEditEvent){
+        int indexOfEditedWord = hintListView.getEditingIndex();
+        String oldWord = hintListView.getItems().get(indexOfEditedWord);
+        String newWord = stringEditEvent.getNewValue();
+
+        model.editWord(oldWord, newWord);
+        hintListView.getItems().set(stringEditEvent.getIndex(), stringEditEvent.getNewValue());
+        model.saveDictionary("tmp.txt");
+    }
+
+    private void updateDictionaryStateButton(){
         if(model.getDictionaryState().equals(DictionaryState.POLISH_ENGLISH)){
             dictionaryStateButton.setText(DictionaryState.POLISH_ENGLISH.getDescription());
         } else {
             dictionaryStateButton.setText(DictionaryState.ENGLISH_POLISH.getDescription());
         }
+    }
+    @FXML
+    public void updateDictionaryStateButton(MouseEvent event){
+        updateDictionaryStateButton();
     }
     @FXML
     public void updateOnSearchInsertion() {
@@ -123,6 +125,7 @@ public class DictionaryController {
             addWordWindow = new AddWordWindow(model);
             addWordWindow.show();
             addWordWindow.setOnCloseRequest(event -> {
+                updateDictionaryStateButton();
                 isEditingGUIOpen = false;
                 addWordWindow = null;
             });
