@@ -61,34 +61,21 @@ public class DictionaryModel {
     }
 
     public void saveDictionary(String filename) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+
+        try ( FileWriter writer = new FileWriter(filename)) {
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
             for (Node child : dictionaryEnglishPolish.root) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(child.value);
-                saveDictionaryHelper(child, sb, writer);
-            }
+                saveDictionaryHelper(child, sb, bufferedWriter);
 
-
-            for (String mainWord : dictionaryEnglishPolish.wordsThatStartsWithPhrase(filename)) {
-                //to u gory zmienic
-                StringBuilder lineBuilder = new StringBuilder();
-                lineBuilder.append(mainWord);
-
-                Queue<String> translations = dictionaryEnglishPolish.findTranslationsQueueByWord(mainWord);
-                for (String translation : translations) {
-                    lineBuilder.append(",");
-                    lineBuilder.append(translation);
-                }
-
-                writer.write(lineBuilder.toString());
-                writer.newLine();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void saveDictionaryHelper(Node node, StringBuilder sb, BufferedWriter writer) {
+    private void saveDictionaryHelper(Node node, StringBuilder sb, BufferedWriter bufferedWriter) {
         if (node.isEndOfWord) {
             if (sb.toString().equals("") || sb.toString().equals("\n") || sb.toString().equals(" "))
                 return;
@@ -103,8 +90,8 @@ public class DictionaryModel {
             }
 
             try {
-                writer.write(lineBuilder.toString());
-                writer.newLine();
+                bufferedWriter.write(lineBuilder.toString());
+                bufferedWriter.newLine();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -112,14 +99,9 @@ public class DictionaryModel {
         }
         for (Node child : node.children) {
             sb.append(child.value);
-            saveDictionaryHelper(child, sb, writer);
+            saveDictionaryHelper(child, sb, bufferedWriter);
             sb.deleteCharAt(sb.length() - 1);
         }
-    }
-
-    public void addWord(String firstLanguageWord, String secondLanguageWord) {
-        currentDictionary.addWord(firstLanguageWord);
-        currentDictionary.addTranslation(firstLanguageWord, secondLanguageWord);
     }
 
     public void editWord(String oldWord, String newWord) {

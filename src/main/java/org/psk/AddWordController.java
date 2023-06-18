@@ -1,6 +1,5 @@
 package org.psk;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -18,27 +17,32 @@ public class AddWordController {
         this.dictionaryModel = dictionaryModel;
 
         handleCurrentDictionaryTextField(dictionaryModel.getDictionaryState().getDescription());
+
         addButton.setOnMouseClicked(this::handleAddButtonAction);
         changeDirectoryButton.setOnMouseClicked(this::handleChangeDictionaryButton);
+        removeButton.setOnMouseClicked(this::handleRemoveButtonAction);
+
     }
 
     @FXML
     private TextField currentDictionaryTextField;
-    @FXML
-    private Button addTranslationButton;
 
     @FXML
     private Button addButton;
-
-    @FXML
-    private Button removeTranslationButton;
 
     @FXML
     private Button removeButton;
 
     @FXML
     private void handleAddButtonAction(MouseEvent event) {
-        dictionaryModel.currentDictionary.printAllWords();
+        String word = addWordTextField.getText();
+        String translation = addWordsTranslationTextField.getText();
+        dictionaryModel.currentDictionary.addWord(word);
+        if (translation != null)
+                dictionaryModel.insertTranslation(word, translation);
+        addWordTextField.clear();
+        addWordsTranslationTextField.clear();
+        dictionaryModel.saveDictionary("tmp2.txt");
     }
 
     @FXML
@@ -53,18 +57,11 @@ public class AddWordController {
     }
 
     @FXML
-    private void handleAddTranslationButtonAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    private void handleRemoveButtonAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    private void handleRemoveTranslationButtonAction(ActionEvent event) {
-
+    private void handleRemoveButtonAction(MouseEvent event) {
+        String wordToRemove = removeWordTextField.getText();
+        dictionaryModel.currentDictionary.removeWord(wordToRemove);
+        removeWordTextField.clear();
+        dictionaryModel.saveDictionary("tmp2.txt");
     }
 
 }

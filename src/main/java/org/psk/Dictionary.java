@@ -14,6 +14,9 @@ public class Dictionary {
 
     public void addTranslation(String word, String translation) {
         Node end = findEndOfWord(word);
+        if(Objects.equals(translation, "") || translation.equals(" "))
+            return;
+        translation = translation.trim();
         if (end != null)
             end.translations.add(translation);
     }

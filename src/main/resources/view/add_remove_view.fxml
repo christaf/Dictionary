@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.layout.Pane?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.psk.AddWordController">
 
    <children>
       <TextField fx:id="addWordTextField" layoutX="168.0" layoutY="139.0" />
       <TextField fx:id="addWordsTranslationTextField" layoutX="374.0" layoutY="139.0" />
       <TextField fx:id="removeWordTextField" layoutX="168.0" layoutY="275.0" />
-      <Button fx:id="addButton" layoutX="50.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Add" />
+      <TextField fx:id="currentDictionaryTextField" editable="false" layoutX="202.0" layoutY="39.0" />
       <Label layoutX="168.0" layoutY="96.0" text="Add word and optionally their translation" />
       <Label layoutX="50.0" layoutY="43.0" text="Current dictionary: " />
       <Label layoutX="168.0" layoutY="232.0" text="Remove word" />
-      <TextField fx:id="currentDictionaryTextField" editable="false" layoutX="202.0" layoutY="39.0" />
+      <Button fx:id="addButton" layoutX="50.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Add" />
       <Button fx:id="removeButton" layoutX="50.0" layoutY="275.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Remove" />
       <Button fx:id="changeDirectoryButton" layoutX="448.0" layoutY="39.0" mnemonicParsing="false" text="Change directory" />
    </children>
