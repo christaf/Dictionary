@@ -42,7 +42,7 @@ public class AddWordController {
                 dictionaryModel.insertTranslation(word, translation);
         addWordTextField.clear();
         addWordsTranslationTextField.clear();
-        dictionaryModel.saveDictionary("tmp2.txt");
+        dictionaryModel.saveDictionary("tmp.txt");
     }
 
     @FXML
@@ -61,7 +61,7 @@ public class AddWordController {
         String wordToRemove = removeWordTextField.getText();
         dictionaryModel.currentDictionary.removeWord(wordToRemove);
         removeWordTextField.clear();
-        dictionaryModel.saveDictionary("tmp2.txt");
+        dictionaryModel.saveDictionary("tmp.txt");
     }
 
 }

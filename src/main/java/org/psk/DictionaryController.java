@@ -14,7 +14,6 @@ import java.util.Queue;
 
 public class DictionaryController {
     private AddWordWindow addWordWindow;
-    private boolean isEditingGUIOpen = false;
     @FXML
     public ToggleButton dictionaryStateButton;
     @FXML
@@ -125,7 +124,6 @@ public class DictionaryController {
             addWordWindow.show();
             addWordWindow.setOnCloseRequest(event -> {
                 updateDictionaryStateButton();
-                isEditingGUIOpen = false;
                 addWordWindow = null;
             });
         }

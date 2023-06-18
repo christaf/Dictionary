@@ -1,5 +1,7 @@
 package org.psk;
 
+import com.sun.scenario.effect.impl.sw.java.JSWBoxBlurPeer;
+
 import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -70,6 +72,8 @@ public class DictionaryModel {
                 saveDictionaryHelper(child, sb, bufferedWriter);
 
             }
+            bufferedWriter.flush();
+            bufferedWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -90,6 +94,7 @@ public class DictionaryModel {
             }
 
             try {
+                System.out.println(lineBuilder.toString());
                 bufferedWriter.write(lineBuilder.toString());
                 bufferedWriter.newLine();
             } catch (IOException e) {
