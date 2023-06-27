@@ -1,6 +1,0 @@
-apple,jablko
-asdf,fff
-asdfdfd,dddd
-banana
-cherry
-date
